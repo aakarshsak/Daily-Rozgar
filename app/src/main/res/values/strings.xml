@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Daily Rozgar</string>
+    <string name="facebook_app_id">220154192271462</string>
+    <string name="fb_login_protocol_scheme">fb220154192271462</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
