@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_light"
+    tools:context=".StartScreen">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:src="@drawable/background"/>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/user"
+        android:id="@+id/userImage"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textUser"
+        android:layout_below="@id/userImage"
+        android:layout_centerHorizontal="true"
+        android:text="User"
+        android:textSize="30dp" />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/workerImage"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/worker"
+        android:layout_below="@id/textUser"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textWorker"
+        android:layout_below="@id/workerImage"
+        android:layout_centerHorizontal="true"
+        android:text="Worker"
+        android:textSize="30dp"
+        android:textColor="@color/primary_text"
+        android:layout_marginTop="10dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textWorker"
+        android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
+</RelativeLayout>

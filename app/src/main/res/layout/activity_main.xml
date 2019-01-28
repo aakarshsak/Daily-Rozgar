@@ -20,7 +20,7 @@
         android:fitsSystemWindows="true"
         android:layout_gravity="left"
         android:background="@color/icons"
-        app:menu="@menu/bottom_entries"
+        app:menu="@menu/nav_entries"
         app:headerLayout="@layout/nav_header">
 
     </android.support.design.widget.NavigationView>
