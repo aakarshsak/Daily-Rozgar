@@ -50,9 +50,20 @@
         android:textColor="@color/primary_text"
         android:layout_marginTop="10dp"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/primary_dark"
+        android:layout_below="@id/textWorker"
+        android:id="@+id/divider"
+        />
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textWorker"
+        android:layout_below="@id/divider"
+        android:layout_marginTop="8dp"
+        android:id="@+id/startRecycler"
         android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
 </RelativeLayout>
