@@ -19,14 +19,14 @@ import com.example.dailyrozgar.CustomerFragments.Home;
 import com.example.dailyrozgar.CustomerFragments.MyProfile;
 
 
-public class MainActivity extends AppCompatActivity {
+public class CustomerMainActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.customer_main);
 
         //fragment initialisation
         loadFragment(new Home());
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId())
         {
-            case android.R.id.home:
+            case R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
         }
         return super.onOptionsItemSelected(item);

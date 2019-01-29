@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dailyrozgar.Home.Model.DataModel;
-import com.example.dailyrozgar.MainActivity;
+import com.example.dailyrozgar.CustomerMainActivity;
 import com.example.dailyrozgar.R;
 import com.example.dailyrozgar.WorkersListActivity;
 
@@ -51,7 +51,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener {
         TextView textViewTitle,textViewDesc;
         ImageView imageView;
-        MainActivity mainActivity;
         public MyViewHolder(View itemView) {
             super(itemView);
             this.textViewTitle = itemView.findViewById(R.id.homeCardText);

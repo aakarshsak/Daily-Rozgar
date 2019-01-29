@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_light">
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/appBarLayout">
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/toolBar"
+                app:titleTextColor="@color/icons"></android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appBarLayout"
+            android:layout_marginBottom="50dp"
+            android:id="@+id/nest">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/fragmentContainer"
+                ></FrameLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+
+            <android.support.design.widget.BottomNavigationView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/bottomNavigation"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="0dp"
+                android:background="@color/primary"
+                app:itemTextColor="@drawable/bot_selector"
+                app:itemIconTint="@drawable/bot_selector"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:menu="@menu/bottom_entries"
+                ></android.support.design.widget.BottomNavigationView>
+        </android.support.constraint.ConstraintLayout>
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

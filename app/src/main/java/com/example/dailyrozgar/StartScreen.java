@@ -3,17 +3,8 @@ package com.example.dailyrozgar;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-
-import com.example.dailyrozgar.Developers.DevCustomAdapter;
-import com.example.dailyrozgar.Developers.DevData;
-import com.example.dailyrozgar.Developers.DevDataModel;
-
-import java.util.ArrayList;
 
 public class StartScreen extends AppCompatActivity {
     ImageView userImage,workerImage;
@@ -47,14 +38,14 @@ public class StartScreen extends AppCompatActivity {
         userImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StartScreen.this,MainActivity.class));
+                startActivity(new Intent(StartScreen.this, CustomerMainActivity.class));
             }
         });
 
         workerImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StartScreen.this,WorkersListActivity.class));
+                startActivity(new Intent(StartScreen.this,WorkerMainActivity.class));
             }
         });
     }
