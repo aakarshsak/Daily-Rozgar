@@ -27,7 +27,7 @@ public class WorkerMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.worker_main);
 
-        loadFragment(new MyProfile());
+        loadFragment(new Home());
 
 
         toolbar=findViewById(R.id.toolBar);

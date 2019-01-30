@@ -95,7 +95,7 @@ public class CustomerMainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId())
         {
-            case R.id.home:
+            case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
         }
         return super.onOptionsItemSelected(item);

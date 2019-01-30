@@ -7,43 +7,94 @@
     tools:context=".WorkerFragments.MyProfile">
 
     <!-- TODO: Update blank fragment layout -->
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-60dp"
+            android:src="@drawable/user"
+            android:layout_marginHorizontal="110dp"
+            android:id="@+id/workerProfileImg"
+            />
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="-40dp"
-                android:src="@drawable/user"
-                android:layout_marginHorizontal="110dp"
-                android:id="@+id/userProfileImg"
-                />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/workerProfileImg"
+            android:textColor="@color/primary_text"
+            android:text="Aakarsh Sinha"
+            android:textAlignment="center"
+            android:layout_marginTop="-80dp"
+            android:textSize="35dp"
+            android:id="@+id/workerProfileName"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:layout_marginTop="25dp"
+            android:text="Electrician"
+            android:textSize="25dp"
+            android:textColor="@color/secondary_text"
+            android:layout_below="@id/workerProfileName"
+            android:id="@+id/workerProfileProf"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="20"
+            android:layout_marginTop="25dp"
+            android:layout_below="@id/workerProfileProf"
+            android:id="@+id/workerProfileLV">
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/userProfileImg"
-                android:textColor="@color/primary_text"
-                android:text="Aakarsh Sinha"
+                android:layout_weight="10"
+                android:text="Base Amount"
+                android:textSize="25dp"
+                android:textColor="@color/secondary_text"
+                android:textAlignment="textEnd" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="25dp"
                 android:textAlignment="center"
-                android:layout_marginTop="-60dp"
-                android:textSize="35dp"
-                android:id="@+id/userProfileName"/>
-            <Button
-                android:layout_width="match_parent"
+                android:textColor="@color/secondary_text"
+                android:text=":"/>
+            <TextView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:background="@drawable/btn_selector"
-                android:layout_below="@id/userProfileName"
-                android:layout_marginTop="40dp"
-                android:text="Add Bio"
-                android:textColor="@color/divider"
-                android:drawableLeft="@drawable/ic_add"
-                />
-        </RelativeLayout>
-    </ScrollView>
+                android:layout_weight="1"
+                android:textSize="25dp"
+                android:textColor="@color/secondary_text"
+                android:text="₹"
+                android:textAlignment="textEnd"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:textAlignment="textStart"
+                android:textColor="@color/secondary_text"
+                android:textSize="25dp"
+                android:text="10000"/>
+        </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:background="@color/btn_selector"
+            android:layout_below="@id/workerProfileLV"
+            android:layout_marginTop="25dp"
+            android:text="Edit Profile"
+            android:textColor="@color/btn_txt_selector"
+            android:drawableLeft="@drawable/ic_add"
+            android:id="@+id/userProfileButton"
+            />
+    </RelativeLayout>
 
 </FrameLayout>
