@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.dailyrozgar.R;
@@ -44,7 +45,7 @@ public class WorkerEditProfile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_worker_edit_profile,container,false);
-
+        Worker worker=new Worker();
         submit=view.findViewById(R.id.workerSubmitButton);
         reset=view.findViewById(R.id.workerResetButton);
 
@@ -63,10 +64,34 @@ public class WorkerEditProfile extends Fragment {
         yes=view.findViewById(R.id.negoYes);
         no=view.findViewById(R.id.negoNo);
 
+        RadioGroup grp1=view.findViewById(R.id.grp1);
+        grp1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId) {
+                    case R.id.male: worker.setForSex(1);break;
+                    case R.id.female: worker.setForSex(0);break;
+                }
+            }
+        });
+        RadioGroup grp2=view.findViewById(R.id.grp2);
+        grp2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                switch (checkedId) {
+                    case R.id.negoYes: worker.setForBase(1);break;
+                    case R.id.negoNo: worker.setForBase(0);break;
+                }
+
+            }
+        });
+
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Worker worker=new Worker();
+
                 worker.setFirst(first.getText().toString());
                 worker.setLast(last.getText().toString());
                 worker.setPhone(phone.getText().toString());
@@ -76,6 +101,16 @@ public class WorkerEditProfile extends Fragment {
                 worker.setZip(zip.getText().toString());
                 worker.setProf(prof.getText().toString());
 
+                if(worker.getForSex()==1)
+                    worker.setSex("MALE");
+                else
+                    worker.setSex("FEMALE");
+
+                if(worker.getForBase()==1)
+                    worker.setBase(base.getText().toString()+" (NEGOTIABLE)");
+                else
+                    worker.setBase(base.getText().toString());
+
                 new PostData().execute(worker);
             }
         });
@@ -84,35 +119,6 @@ public class WorkerEditProfile extends Fragment {
     }
 
 
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.male:
-                if (checked)
-                    //worker.setSex("Male");
-                break;
-            case R.id.female:
-                if (checked)
-                    // Ninjas rule
-                    //worker.setSex("Female");
-                break;
-        }
-
-        switch(view.getId())
-        {
-            case R.id.negoNo:
-                if(checked)
-                    //worker.setBase(base.getText().toString());
-                break;
-            case R.id.negoYes:
-                if(checked)
-                    //worker.setBase(base.getText().toString()+"( NEGOTIABLE )");
-                break;
-        }
-    }
 
     class PostData extends AsyncTask<Object,Void,Boolean>
     {
@@ -124,6 +130,7 @@ public class WorkerEditProfile extends Fragment {
             HttpDataHandler hh=new HttpDataHandler();
             String json = "{\"first_name\":\"" + w.getFirst() +
                         "\",\"last_name\":\"" + w.getLast() +
+                        "\",\"sex\":\"" + w.getSex() +
                         "\",\"contact_no\":\"" + w.getPhone() +
                         "\",\"locality\":\"" + w.getLoc() +
                         "\",\"city\":\"" + w.getCity() +
