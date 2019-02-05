@@ -41,7 +41,7 @@
             android:padding="5dp"
             android:textColor="@color/primary_text"
             android:layout_marginHorizontal="6dp"
-            android:id="@+id/worerLastName"/>
+            android:id="@+id/workerLastName"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -201,7 +201,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Yes"
-                android:id="@+id/nogoYes"
+                android:id="@+id/negoYes"
                 android:buttonTint="@color/primary"
                 android:onClick="onRadioButtonClicked"
                 android:textColor="@color/secondary_text"/>
