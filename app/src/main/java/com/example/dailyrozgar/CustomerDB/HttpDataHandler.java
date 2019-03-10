@@ -1,13 +1,9 @@
-package com.example.dailyrozgar.WorkerDB;
+package com.example.dailyrozgar.CustomerDB;
 
-import com.example.dailyrozgar.WorkerDB.Class.Worker;
+import com.example.dailyrozgar.CustomerDB.Common;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;

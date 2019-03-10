@@ -11,9 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WorkerMainActivity"></activity>
+        <activity android:name=".CustomerSignup"></activity>
+        <activity android:name=".CustomerLogin" />
+        <activity android:name=".WorkerMainActivity" />
         <activity android:name=".CustomerMainActivity" />
-        <activity android:name=".WorkersListActivity" />
+        <activity android:name=".WorkersListActivity" android:label="Plumbers" />
         <activity android:name=".StartScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

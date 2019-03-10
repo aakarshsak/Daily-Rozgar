@@ -46,8 +46,6 @@ public class Home extends Fragment {
         cardView=view.findViewById(R.id.homeCardView);
 
 
-        //Card View On click listener
-
 
         layoutManager=new LinearLayoutManager(getActivity());
         //Recycler View setup
@@ -55,7 +53,7 @@ public class Home extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
-        datamodels=new ArrayList<DataModel>();
+        datamodels=new ArrayList<>();
         for(int i=0;i<7;i++)
         {
             datamodels.add(new DataModel(MyData.titlearray[i],MyData._id[i],MyData.images[i],MyData.description[i]));

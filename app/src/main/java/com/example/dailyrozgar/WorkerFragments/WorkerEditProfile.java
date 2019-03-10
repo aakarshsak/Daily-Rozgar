@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +16,7 @@ import android.widget.TextView;
 
 import com.example.dailyrozgar.R;
 import com.example.dailyrozgar.WorkerDB.Class.Worker;
-import com.example.dailyrozgar.WorkerDB.Common;
 import com.example.dailyrozgar.WorkerDB.HttpDataHandler;
-
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -140,46 +134,6 @@ public class WorkerEditProfile extends Fragment {
                         "\",\"base_price\":\"" + w.getBase() + "\"}";
             hh.postHTTPData(json);
             return false;
-            //Log.d("contact", ""+w);
-
-//            try {
-//                Common c = new Common();
-//                URL url = new URL(c.getAddressAPI());
-//
-//                HttpURLConnection connection = (HttpURLConnection) url
-//                        .openConnection();
-//                connection.setRequestMethod("PUT");
-//                connection.setDoOutput(true);
-//                connection.setRequestProperty("Content-Type", "application/json");
-//                connection.setRequestProperty("Accept", "application/json");
-//
-//                OutputStreamWriter osw = new OutputStreamWriter(
-//                        connection.getOutputStream());
-//                String json = "{\"first_name\":\"" + w.getFirst() + "\"}";
-////                        "\",\"last_name\":\"" + w.getLast() +
-////                        "\",\"contact_no\":\"" + w.getPhone() +
-////                        "\",\"locality\":\"" + w.getLoc() +
-////                        "\",\"city\":\"" + w.getCity() +
-////                        "\",\"state\":\"" + w.getState() +
-////                        "\",\"zip\":\"" + w.getZip() +
-////                        "\",\"profession\":\"" + w.getProf() +
-////                        "\".\"base_price\":\"" + w.getBase() + "\"}";
-//
-//                osw.write(json);
-//                osw.flush();
-//                osw.close();
-//
-//                if (connection.getResponseCode() < 205) {
-//                    return true;
-//                } else {
-//                    return false;
-//                }
-//
-//            } catch (Exception e) {
-//                e.getMessage();
-//                Log.d("Got error", e.getMessage());
-//                return false;
-//            }
         }
     }
 

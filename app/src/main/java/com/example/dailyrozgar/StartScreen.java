@@ -38,7 +38,7 @@ public class StartScreen extends AppCompatActivity {
         userImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StartScreen.this, CustomerMainActivity.class));
+                startActivity(new Intent(StartScreen.this, CustomerLogin.class));
             }
         });
 
