@@ -53,14 +53,14 @@
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:id="@+id/grp1">
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Male"
                 android:id="@+id/male"
-                android:onClick="onRadioButtonClicked"
                 android:buttonTint="@color/primary"
                 android:textColor="@color/secondary_text"/>
             
@@ -69,7 +69,6 @@
                 android:layout_height="wrap_content"
                 android:text="Female"
                 android:id="@+id/female"
-                android:onClick="onRadioButtonClicked"
                 android:buttonTint="@color/primary"
                 android:textColor="@color/secondary_text"/>
 
@@ -195,7 +194,8 @@
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:id="@+id/grp2">
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -203,7 +203,6 @@
                 android:text="Yes"
                 android:id="@+id/negoYes"
                 android:buttonTint="@color/primary"
-                android:onClick="onRadioButtonClicked"
                 android:textColor="@color/secondary_text"/>
 
             <RadioButton
@@ -211,7 +210,6 @@
                 android:layout_height="wrap_content"
                 android:text="No"
                 android:id="@+id/negoNo"
-                android:onClick="onRadioButtonClicked"
                 android:buttonTint="@color/primary"
                 android:textColor="@color/secondary_text"/>
 
