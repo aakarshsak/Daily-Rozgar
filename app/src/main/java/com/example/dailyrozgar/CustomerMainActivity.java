@@ -1,5 +1,6 @@
 package com.example.dailyrozgar;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -13,21 +14,31 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.dailyrozgar.CustomerFragments.History;
 import com.example.dailyrozgar.CustomerFragments.Home;
 import com.example.dailyrozgar.CustomerFragments.MyProfile;
+
+import org.w3c.dom.Text;
 
 
 public class CustomerMainActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     Toolbar toolbar;
+    TextView nav;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_main);
 
+//        Intent i=getIntent();
+//        String user=i.getStringExtra("name").toString();
+//
+//        nav=findViewById(R.id.navHeader);
+//
+//        nav.setText(user);
         //fragment initialisation
         loadFragment(new Home());
 
@@ -53,6 +64,7 @@ public class CustomerMainActivity extends AppCompatActivity {
                     case R.id.home:loadFragment(new Home());break;
                     case R.id.myProfile:loadFragment(new MyProfile());break;
                     case R.id.history:loadFragment(new History());break;
+                    case R.id.logout:startActivity(new Intent(CustomerMainActivity.this,StartScreen.class));
                 }
                 item.setChecked(true);
                 drawerLayout.closeDrawers();
