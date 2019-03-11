@@ -27,29 +27,43 @@ public class CustomerLogin extends AppCompatActivity {
     EditText user,pass;
     Button btn;
     TextView signup;
-    ArrayList<Customer> returnValues = new ArrayList<Customer>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_login);
 
+
+        //username and password edit text fields to enter username and password
         user=findViewById(R.id.username);
         pass=findViewById(R.id.password);
-        btn=findViewById(R.id.loginButton);
-        signup=findViewById(R.id.signup2);
 
+        //button  to submit my username and pasword to be checked by the database
+        btn=findViewById(R.id.loginButton);
+
+
+        //a text field to  go to a sign up page if already not signed up
+        signup=findViewById(R.id.signup2);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CustomerLogin.this,CustomerSignup.class));
             }
         });
+
+        ///a string to test the feature of sending the string to another page
         String name="Aakarsh Sinha";
+
+        //button to subit my request to sign in
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                ///to store the username and password into strings
                 String username=user.getText().toString();
                 String password=pass.getText().toString();
+
+
+                ///checks if username is there in the database or not and returns true if there is
                 if(fetch(username,password))
                 {
                     startActivity(new Intent(CustomerLogin.this,CustomerMainActivity.class));
@@ -58,6 +72,8 @@ public class CustomerLogin extends AppCompatActivity {
 //                    intent.putExtra("name",name);
 //                    startActivity(intent);
                 }
+
+                ///else print a toast saying invalid login
                 else
                 {
                     Toast.makeText(CustomerLogin.this, "Invalid Login", Toast.LENGTH_SHORT).show();
@@ -70,10 +86,10 @@ public class CustomerLogin extends AppCompatActivity {
 
     public Boolean fetch(String user,String pass)
     {
-        //Boolean res=false;
         GetContactsAsyncTask task = new GetContactsAsyncTask(user,pass);
         try {
-
+            //task.execute().task()  returns the doBAckground function result which is a Customer object in this case
+            //if customer already exist with the username and password then a match is found and returns a object
             Customer c=task.execute().get();
             if(c==null)
                 return false;
@@ -102,7 +118,6 @@ public class CustomerLogin extends AppCompatActivity {
         @Override
         protected Customer doInBackground(Customer... arg0) {
 
-            ArrayList<Customer> customers = new ArrayList<>();
             try {
                 Common common = new Common();
                 URL url = new URL(common.getAddressAPI());

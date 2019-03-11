@@ -17,6 +17,8 @@ public class StartScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_screen);
 
+
+        ///username and password image buttons to enter into username or password section
         userImage=findViewById(R.id.userImage);
         workerImage=findViewById(R.id.workerImage);
 //        recyclerView=findViewById(R.id.startRecycler);
@@ -38,6 +40,8 @@ public class StartScreen extends AppCompatActivity {
         userImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //starting login page to sign in as a user
                 startActivity(new Intent(StartScreen.this, CustomerLogin.class));
             }
         });
@@ -45,6 +49,7 @@ public class StartScreen extends AppCompatActivity {
         workerImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //starting login page to sign in as a worker
                 startActivity(new Intent(StartScreen.this,WorkerMainActivity.class));
             }
         });
