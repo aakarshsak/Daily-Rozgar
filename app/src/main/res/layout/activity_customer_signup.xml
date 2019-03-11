@@ -36,7 +36,7 @@
             android:padding="5dp"
             android:textColor="@color/primary_text"
             android:layout_marginHorizontal="6dp"
-            android:id="@+id/customerUserName" />
+            android:id="@+id/customerUsername" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

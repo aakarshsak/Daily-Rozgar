@@ -50,7 +50,7 @@ public class CustomerLogin extends AppCompatActivity {
             public void onClick(View v) {
                 String username=user.getText().toString();
                 String password=pass.getText().toString();
-                if(fetch(username,password))//username.equals("aakarshsak") && password.equals("aak123"))
+                if(fetch(username,password))
                 {
                     startActivity(new Intent(CustomerLogin.this,CustomerMainActivity.class));
 
@@ -75,21 +75,24 @@ public class CustomerLogin extends AppCompatActivity {
         try {
 
             Customer c=task.execute().get();
-            if(c==null) return false;
-            else return true;
+            if(c==null)
+                return false;
+            else
+                return true;
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        return false;
+        return true;
     }
 
     public class GetContactsAsyncTask extends AsyncTask<Customer, Void, Customer> {
         String server_output = null;
         String temp_output = null;
         String u,p;
+        Customer temp=null;
 
         public GetContactsAsyncTask(String u,String p)
         {
@@ -123,7 +126,7 @@ public class CustomerLogin extends AppCompatActivity {
 
                 DBObject dbObj = (DBObject) o;
                 BasicDBList contacts = (BasicDBList) dbObj.get("DB_output");
-                Customer temp=null;
+
                 for (Object obj : contacts) {
                     DBObject userObj = (DBObject) obj;
                     if(u.equals(userObj.get("username").toString()) && p.equals(userObj.get("password").toString())) {
@@ -141,7 +144,7 @@ public class CustomerLogin extends AppCompatActivity {
                 e.getMessage();
             }
 
-            return new Customer();
+            return temp;
         }
     }
 

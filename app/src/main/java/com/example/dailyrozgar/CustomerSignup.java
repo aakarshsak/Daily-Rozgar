@@ -19,20 +19,18 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class CustomerSignup extends AppCompatActivity {
 
     EditText user,pass,repass,first,last,city,zip,state,loc;
     Button btn;
-    Customer c;
+    Boolean flag=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_signup);
 
-        user=findViewById(R.id.customerUserName);
+        user=findViewById(R.id.customerUsername);
         pass=findViewById(R.id.customerPassword);
         repass=findViewById(R.id.customerConfirmPassword);
         first=findViewById(R.id.customerFirstName);
@@ -48,7 +46,7 @@ public class CustomerSignup extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Customer c=new Customer();
                 String r=repass.getText().toString();
                 c.setUsername(user.getText().toString());
                 c.setPassword(pass.getText().toString());
@@ -59,11 +57,13 @@ public class CustomerSignup extends AppCompatActivity {
                 c.setPin(zip.getText().toString());
                 c.setState(state.getText().toString());
 
+                GetContactsAsyncTask task = new GetContactsAsyncTask(c.getUsername());
 
-                Boolean flag=true;
-                if(fetch(c.getUsername()))
+                try {
+                    flag = task.execute().get();
+                }catch(Exception e){e.printStackTrace();}
+                if(!flag)
                 {
-                    flag=false;
                     Toast.makeText(CustomerSignup.this, "username already exist", Toast.LENGTH_SHORT).show();
                 }
 
@@ -90,24 +90,6 @@ public class CustomerSignup extends AppCompatActivity {
 
     }
 
-    public Boolean fetch(String user)
-    {
-        //Boolean res=false;
-        GetContactsAsyncTask task = new GetContactsAsyncTask(user);
-        try {
-
-            Customer c=task.execute().get();
-            if(c==null) return true;
-            else return false;
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
     class PostData extends AsyncTask<Object,Void,Boolean>
     {
 
@@ -122,27 +104,27 @@ public class CustomerSignup extends AppCompatActivity {
                     "\",\"last_name\":\"" + c.getLast() +
                     "\",\"locality\":\"" + c.getLoc() +
                     "\",\"city\":\"" + c.getCity() +
-                    "\",\"state\":\"" + c.getState() +
-                    "\",\"pin\":\"" + c.getPin() +"\"}";
+                    "\",\"pin\":\"" + c.getPin() +
+                    "\",\"state\":\"" + c.getState() +"\"}";
             hh.postHTTPData(json);
             return false;
         }
     }
 
 
-    public class GetContactsAsyncTask extends AsyncTask<Customer, Void, Customer> {
+    public class GetContactsAsyncTask extends AsyncTask<Customer, Void, Boolean> {
         String server_output = null;
         String temp_output = null;
-        String u,p;
+        String u;
 
         public GetContactsAsyncTask(String u)
         {
             this.u=u;
         }
         @Override
-        protected Customer doInBackground(Customer... arg0) {
+        protected Boolean doInBackground(Customer... arg0) {
 
-            ArrayList<Customer> customers = new ArrayList<>();
+            //ArrayList<Customer> customers = new ArrayList<>();
             try {
                 com.example.dailyrozgar.CustomerDB.Common common = new Common();
                 URL url = new URL(common.getAddressAPI());
@@ -168,11 +150,8 @@ public class CustomerSignup extends AppCompatActivity {
                 BasicDBList contacts = (BasicDBList) dbObj.get("DB_output");
                 for (Object obj : contacts) {
                     DBObject userObj = (DBObject) obj;
-                    if(u.equals(userObj.get("username").toString()) && p.equals(userObj.get("password").toString())) {
-                        Customer temp = new Customer();
-                        temp.setUsername(userObj.get("username").toString());
-                        temp.setPassword(userObj.get("password").toString());
-                        return temp;
+                    if(u.equals(userObj.get("username").toString())) {
+                        return false;
                     }
                     else
                         continue;
@@ -183,7 +162,7 @@ public class CustomerSignup extends AppCompatActivity {
                 e.getMessage();
             }
 
-            return new Customer();
+            return true;
         }
     }
 }
