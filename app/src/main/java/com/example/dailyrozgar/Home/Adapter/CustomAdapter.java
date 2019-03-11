@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     private ArrayList<DataModel> dataset;
+    String s;
 
     public CustomAdapter(ArrayList<DataModel> dataset) {
         this.dataset = dataset;
@@ -37,7 +38,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         TextView textViewTitle=holder.textViewTitle;
         ImageView img=holder.imageView;
         TextView textViewDesc=holder.textViewDesc;
-
         textViewTitle.setText(dataset.get(position).getTitle().toString());
         img.setImageResource(dataset.get(position).getImage());
         textViewDesc.setText(dataset.get(position).getDescription().toString());
@@ -60,16 +60,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    s = dataset.get(getAdapterPosition()).getTitle().toString();
+                    Intent i=new Intent(v.getContext(),WorkersListActivity.class);
+                    i.putExtra("Profession",s);
                     switch(getAdapterPosition())
                     {
-                        case 0: v.getContext().startActivity(new Intent(v.getContext(), WorkersListActivity.class));break;
-                        case 1: v.getContext().startActivity(new Intent(v.getContext(), WorkersListActivity.class));break;
-                        case 2: v.getContext().startActivity(new Intent(v.getContext(), WorkersListActivity.class));break;
-                        case 3: v.getContext().startActivity(new Intent(v.getContext(), WorkersListActivity.class));break;
-                        case 4: v.getContext().startActivity(new Intent(v.getContext(), WorkersListActivity.class));break;
-                        case 5: v.getContext().startActivity(new Intent(v.getContext(), WorkersListActivity.class));break;
-                        case 6: v.getContext().startActivity(new Intent(v.getContext(), WorkersListActivity.class));break;
-
+                        case 0: v.getContext().startActivity(i);break;
+                        case 1: v.getContext().startActivity(i);break;
+                        case 2: v.getContext().startActivity(i);break;
+                        case 3: v.getContext().startActivity(i);break;
+                        case 4: v.getContext().startActivity(i);break;
+                        case 5: v.getContext().startActivity(i);break;
+                        case 6: v.getContext().startActivity(i);break;
                     }
                 }
             });

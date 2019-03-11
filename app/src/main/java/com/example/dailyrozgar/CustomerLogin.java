@@ -62,11 +62,20 @@ public class CustomerLogin extends AppCompatActivity {
                 String username=user.getText().toString();
                 String password=pass.getText().toString();
 
+                GetContactsAsyncTask task =new GetContactsAsyncTask(username,password);
+                Customer c=null;
+                try{
+                        c=task.execute().get();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
 
                 ///checks if username is there in the database or not and returns true if there is
-                if(fetch(username,password))
+                if(c!=null)
                 {
-                    startActivity(new Intent(CustomerLogin.this,CustomerMainActivity.class));
+                    Intent i=new Intent(CustomerLogin.this,CustomerMainActivity.class);
+                    i.putExtra("Customer",c);
+                    startActivity(i);//new Intent(CustomerLogin.this,CustomerMainActivity.class));
 
 //                    Intent intent=new Intent(CustomerLogin.this,CustomerMainActivity.class);
 //                    intent.putExtra("name",name);
@@ -82,26 +91,6 @@ public class CustomerLogin extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    public Boolean fetch(String user,String pass)
-    {
-        GetContactsAsyncTask task = new GetContactsAsyncTask(user,pass);
-        try {
-            //task.execute().task()  returns the doBAckground function result which is a Customer object in this case
-            //if customer already exist with the username and password then a match is found and returns a object
-            Customer c=task.execute().get();
-            if(c==null)
-                return false;
-            else
-                return true;
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return true;
     }
 
     public class GetContactsAsyncTask extends AsyncTask<Customer, Void, Customer> {
@@ -148,6 +137,12 @@ public class CustomerLogin extends AppCompatActivity {
                         temp = new Customer();
                         temp.setUsername(userObj.get("username").toString());
                         temp.setPassword(userObj.get("password").toString());
+                        temp.setFirst(userObj.get("first_name").toString());
+                        temp.setLast(userObj.get("last_name").toString());
+                        temp.setCity(userObj.get("city").toString());
+                        temp.setLoc(userObj.get("locality").toString());
+                        temp.setPin(userObj.get("zip").toString());
+                        temp.setState(userObj.get("state").toString());
                         return temp;
                     }
                     else

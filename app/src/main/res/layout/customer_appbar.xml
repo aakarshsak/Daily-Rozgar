@@ -20,10 +20,20 @@
                     app:titleTextColor="@color/icons"></android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="NAMe"
+            android:id="@+id/test"
+            android:layout_below="@id/appBarLayout"
+            android:textColor="#000000"
+            />
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/appBarLayout"
+            android:layout_below="@id/test"
             android:layout_marginBottom="50dp"
             android:id="@+id/nest">
 

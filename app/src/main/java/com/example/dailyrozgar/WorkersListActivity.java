@@ -1,5 +1,6 @@
 package com.example.dailyrozgar;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -10,9 +11,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.example.dailyrozgar.WorkerDB.Adapter.CustomAdapter;
 import com.example.dailyrozgar.WorkerDB.Class.Worker;
 import com.example.dailyrozgar.WorkerDB.Common;
@@ -38,7 +38,7 @@ public class WorkersListActivity extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     List<Worker> workers=new ArrayList<Worker>();
-
+    TextView test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,19 +53,23 @@ public class WorkersListActivity extends AppCompatActivity {
         toolbar=findViewById(R.id.toolBar);
         drawerLayout=findViewById(R.id.drawerLayout);
 
+        Intent i = getIntent();
+        String s=i.getStringExtra("Profession");
 
         //merging toolbar with action bar
         setSupportActionBar(toolbar);
         ActionBar actionbar=getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        actionbar.setTitle(s);
+
 
         layoutManager=new LinearLayoutManager(this);
         //Recycler View setup
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        GetContactsAsyncTask task = new GetContactsAsyncTask();
+        GetContactsAsyncTask task = new GetContactsAsyncTask(s);
         try {
             adapter=new CustomAdapter(task.execute().get());
             recyclerView.setAdapter(adapter);
@@ -83,7 +87,11 @@ public class WorkersListActivity extends AppCompatActivity {
     public class GetContactsAsyncTask extends AsyncTask<Worker, Void, ArrayList<Worker>> {
          String server_output = null;
          String temp_output = null;
-
+         String s;
+         GetContactsAsyncTask(String s)
+         {
+             this.s=s;
+         }
         @Override
         protected ArrayList<Worker> doInBackground(Worker... arg0) {
 
@@ -114,7 +122,7 @@ public class WorkersListActivity extends AppCompatActivity {
                 for (Object obj : contacts) {
                     DBObject userObj = (DBObject) obj;
                     String pro=userObj.get("profession").toString();
-                    if(pro.equals("Plumber")) {
+                    if(pro.equals(s)) {
                         Worker temp = new Worker();
                         temp.setBase(userObj.get("base_price").toString());
                         temp.setFirst(userObj.get("first_name").toString());
@@ -137,40 +145,4 @@ public class WorkersListActivity extends AppCompatActivity {
             return workers;
         }
     }
-
-
-//    class GetData extends AsyncTask<String,Void,String> {
-////
-////
-////
-////        @Override
-////        protected String doInBackground(String... params) {
-////            String stream=null;
-////            String urlString=params[0];
-////            HttpDataHandler http=new HttpDataHandler();
-////            stream=http.getHTTPData(urlString);
-////            return stream;
-////        }
-////
-////        @Override
-////        protected void onPostExecute(String s) {
-////            super.onPostExecute(s);
-////            Gson gson = new Gson();
-////            Type listType = new TypeToken<ArrayList<Worker>>() {
-////            }.getType();
-////            datamodels = gson.fromJson(s, listType);
-////            //datamodels = new ArrayList<Worker>();
-////
-////            ///need to  addd
-////
-////
-////
-////            //Attaching to the adapter
-////            adapter = new CustomAdapter(datamodels);
-////            recyclerView.setAdapter(adapter);
-////        }
-////    }
-
-
-
 }

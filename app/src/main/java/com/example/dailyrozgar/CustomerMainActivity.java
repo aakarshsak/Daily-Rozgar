@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.dailyrozgar.CustomerDB.Class.Customer;
 import com.example.dailyrozgar.CustomerFragments.History;
 import com.example.dailyrozgar.CustomerFragments.Home;
 import com.example.dailyrozgar.CustomerFragments.MyProfile;
@@ -27,18 +28,21 @@ public class CustomerMainActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     Toolbar toolbar;
-    TextView nav;
+    TextView test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_main);
 
+        Intent i = getIntent();
+        Customer c=(Customer)i.getSerializableExtra("Customer");
+
 //        Intent i=getIntent();
 //        String user=i.getStringExtra("name").toString();
 //
-//        nav=findViewById(R.id.navHeader);
+        test=findViewById(R.id.test);
 //
-//        nav.setText(user);
+        test.setText(c.getFirst()+" "+c.getLast());
         //fragment initialisation
         loadFragment(new Home());
 

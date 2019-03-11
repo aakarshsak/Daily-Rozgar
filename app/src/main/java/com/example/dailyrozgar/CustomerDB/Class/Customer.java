@@ -1,6 +1,8 @@
 package com.example.dailyrozgar.CustomerDB.Class;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable {
 
     Id _id;
     String first,last,loc,username,password,city,state,pin;
