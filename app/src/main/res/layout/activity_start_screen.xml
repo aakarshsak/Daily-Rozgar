@@ -1,197 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+    android:weightSum="20"
+    android:padding="15dp"
     tools:context=".StartScreen">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="240dp"
-                    android:src="@drawable/background"/>
-
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/user"
-                    android:id="@+id/userImage"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="70dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textUser"
-                    android:layout_below="@id/userImage"
-                    android:layout_centerHorizontal="true"
-                    android:text="User"
-                    android:textSize="30dp" />
-
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:id="@+id/workerImage"
-                    android:layout_marginTop="30dp"
-                    android:src="@drawable/worker"
-                    android:layout_below="@id/textUser"
-                    android:layout_centerHorizontal="true"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textWorker"
-                    android:layout_below="@id/workerImage"
-                    android:layout_centerHorizontal="true"
-                    android:text="Worker"
-                    android:textSize="30dp"
-                    android:textColor="@color/primary_text"
-                    android:layout_marginTop="10dp"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="78dp"
-                    android:background="@color/primary_dark"
-                    android:layout_below="@id/textWorker"
-                    android:id="@+id/divider1"
-                    />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_below="@id/divider1"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/ly1"
-                    android:background="@color/primary_light">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="240dp"
-                            android:id="@+id/devImageSinha"
-                            android:layout_marginHorizontal="5dp"
-                            android:src="@drawable/aakarsh"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="5dp"
-                            android:id="@+id/devNameSinha"
-                            android:text="Aakarh Sinha"
-                            android:layout_below="@id/devImage"
-                            android:textAlignment="center"
-                            android:textStyle="bold"
-                            android:textSize="24dp"
-                            android:textColor="@color/primary_text" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="18dp"
-                            android:id="@+id/devDescSinha"
-                            android:textColor="@color/primary_text"
-                            android:text="name is aakarhs sinha.name is aakarhs sinha.name is aakarhs sinha.name is aakarhs sinha.name is aakarhs sinha.name is aakarhs sinha.name is aakarhs sinha."/>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/primary_dark"
-                    android:layout_below="@id/ly1"
-                    android:id="@+id/divider2"
-                    />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:id="@+id/ly2"
-                    android:layout_below="@id/divider2"
-                    android:background="@color/primary_light">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="240dp"
-                            android:id="@+id/devImageAryan"
-                            android:layout_marginHorizontal="5dp"
-                            android:src="@drawable/aryan"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="5dp"
-                            android:id="@+id/devNameAryan"
-                            android:text="Aakarh Sinha"
-                            android:layout_below="@id/devImage"
-                            android:textAlignment="center"
-                            android:textStyle="bold"
-                            android:textSize="24dp"
-                            android:textColor="@color/primary_text" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="18dp"
-                            android:id="@+id/devDescAryan"
-                            android:textColor="@color/primary_text"
-                            android:text="Name is Aryna Kumar.Name is Aryna Kumar.Name is Aryna Kumar.Name is Aryna Kumar.Name is Aryna Kumar.Name is Aryna Kumar.Name is Aryna Kumar."/>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/primary_dark"
-                    android:layout_below="@id/ly2"
-                    android:id="@+id/divider3"
-                    />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9">
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:id="@+id/ly3"
-                    android:layout_below="@id/divider3"
-                    android:background="@color/primary_light">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="240dp"
-                            android:id="@+id/devImageAk"
-                            android:layout_marginHorizontal="5dp"
-                            android:src="@drawable/ashish"/>
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/user"
+            android:id="@+id/userImage"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textUser"
+            android:layout_below="@id/userImage"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/primary_text"
+            android:text="Customer"
+            android:textSize="30dp" />
+    </RelativeLayout>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="5dp"
-                            android:id="@+id/devNameAk"
-                            android:text="Aakarh Sinha"
-                            android:layout_below="@id/devImage"
-                            android:textAlignment="center"
-                            android:textStyle="bold"
-                            android:textSize="24dp"
-                            android:textColor="@color/primary_text" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#0042ee"/>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="18dp"
-                            android:id="@+id/devDescAk"
-                            android:textColor="@color/primary_text"
-                            android:text="NAme is Ashish Kumar.NAme is Ashish Kumar.NAme is Ashish Kumar.NAme is Ashish Kumar.NAme is Ashish Kumar.NAme is Ashish Kumar.NAme is Ashish Kumar. "/>
-                </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Who Are You?"
+        android:textSize="40dp"
+        android:textColor="@color/primary_text"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:layout_weight="2"
+        />
 
-                <!--<android.support.v7.widget.RecyclerView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_below="@id/divider"-->
-                    <!--android:layout_marginTop="8dp"-->
-                    <!--android:id="@+id/startRecycler"-->
-                    <!--android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>-->
-        </RelativeLayout>
-</ScrollView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#0042ee"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9">
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:id="@+id/workerImage"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/worker"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textWorker"
+            android:layout_below="@id/workerImage"
+            android:layout_centerHorizontal="true"
+            android:text="Worker"
+            android:textSize="30dp"
+            android:textColor="@color/primary_text"
+            android:layout_marginTop="10dp"/>
+    </RelativeLayout>
+</LinearLayout>

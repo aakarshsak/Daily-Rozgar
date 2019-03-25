@@ -8,10 +8,6 @@ import android.widget.ImageView;
 
 public class StartScreen extends AppCompatActivity {
     ImageView userImage,workerImage;
-//    RecyclerView recyclerView;
-//    RecyclerView.Adapter adapter;
-//    RecyclerView.LayoutManager layoutManager;
-//    static ArrayList<DevDataModel> dataModels;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,21 +17,7 @@ public class StartScreen extends AppCompatActivity {
         ///username and password image buttons to enter into username or password section
         userImage=findViewById(R.id.userImage);
         workerImage=findViewById(R.id.workerImage);
-//        recyclerView=findViewById(R.id.startRecycler);
-//
-//        layoutManager=new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setItemAnimator(new DefaultItemAnimator());
-//
-//        dataModels=new ArrayList<DevDataModel>();
-//
-//        for(int i=0;i<3;i++)
-//        {
-//            dataModels.add(new DevDataModel(DevData.devNameArray[i],DevData.devDescArray[i],DevData.devImageArray[i]));
-//        }
-//
-//        adapter=new DevCustomAdapter(dataModels);
-//        recyclerView.setAdapter(adapter);
+
 //
         userImage.setOnClickListener(new View.OnClickListener() {
             @Override

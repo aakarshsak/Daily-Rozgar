@@ -8,15 +8,18 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/test_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CustomerSignup"></activity>
+        <activity android:name=".CustomerSignup" />
         <activity android:name=".CustomerLogin" />
         <activity android:name=".WorkerMainActivity" />
         <activity android:name=".CustomerMainActivity" />
-        <activity android:name=".WorkersListActivity" android:label="Plumbers" />
-        <activity android:name=".StartScreen">
+        <activity android:name=".StartScreen" />
+        <activity
+            android:name=".WorkersListActivity"
+            android:label="Plumbers" />
+        <activity android:name=".Splash_Screen" android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
