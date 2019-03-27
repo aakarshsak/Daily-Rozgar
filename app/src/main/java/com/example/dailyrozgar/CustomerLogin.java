@@ -19,8 +19,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class CustomerLogin extends AppCompatActivity {
 
@@ -51,7 +49,7 @@ public class CustomerLogin extends AppCompatActivity {
         });
 
         ///a string to test the feature of sending the string to another page
-        String name="Aakarsh Sinha";
+        //String name="Aakarsh Sinha";
 
         //button to subit my request to sign in
         btn.setOnClickListener(new View.OnClickListener() {
@@ -137,11 +135,14 @@ public class CustomerLogin extends AppCompatActivity {
                         temp = new Customer();
                         temp.setUsername(userObj.get("username").toString());
                         temp.setPassword(userObj.get("password").toString());
-                        temp.setFirst(userObj.get("first_name").toString());
-                        temp.setLast(userObj.get("last_name").toString());
+                        temp.setFname(userObj.get("fname").toString());
+                        temp.setLname(userObj.get("lname").toString());
                         temp.setCity(userObj.get("city").toString());
+                        temp.setStreet(userObj.get("street").toString());
+                        temp.setFlat(userObj.get("flat").toString());
+                        temp.setLandmark(userObj.get("landmark").toString());
                         temp.setLoc(userObj.get("locality").toString());
-                        temp.setPin(userObj.get("zip").toString());
+                        temp.setZip(userObj.get("zip").toString());
                         temp.setState(userObj.get("state").toString());
                         return temp;
                     }

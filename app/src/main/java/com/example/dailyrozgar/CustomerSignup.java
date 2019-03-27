@@ -5,8 +5,11 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.dailyrozgar.CustomerDB.Class.Customer;
@@ -22,9 +25,11 @@ import java.net.URL;
 
 public class CustomerSignup extends AppCompatActivity {
 
-    EditText user,pass,repass,first,last,city,zip,state,loc;
+    EditText user,pass,repass,first,last,city,zip,state;
+    Spinner loc;
     Button btn;
     Boolean flag=false;
+    Customer c;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,10 +40,29 @@ public class CustomerSignup extends AppCompatActivity {
         repass=findViewById(R.id.customerConfirmPassword);
         first=findViewById(R.id.customerFirstName);
         last=findViewById(R.id.customerLastName);
-        city=findViewById(R.id.customerCity);
-        zip=findViewById(R.id.customerZip);
-        state=findViewById(R.id.customerState);
         loc=findViewById(R.id.customerLocality);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
+                R.array.planets_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        loc.setAdapter(adapter1);
+
+
+        c=new Customer();
+        loc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                c.setLoc(loc.getSelectedItem().toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         btn=findViewById(R.id.customerSubmitButton);
 
@@ -46,16 +70,16 @@ public class CustomerSignup extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Customer c=new Customer();
+
                 String r=repass.getText().toString();
                 c.setUsername(user.getText().toString());
                 c.setPassword(pass.getText().toString());
-                c.setCity(city.getText().toString());
-                c.setFirst(first.getText().toString());
-                c.setLast(last.getText().toString());
-                c.setLoc(loc.getText().toString());
-                c.setPin(zip.getText().toString());
-                c.setState(state.getText().toString());
+                c.setCity("Tumkur");
+                c.setFname(first.getText().toString());
+                c.setLname(last.getText().toString());
+                //c.setLoc(loc.getText().toString());
+                c.setZip("572103");
+                c.setState("Karnataka");
 
                 GetContactsAsyncTask task = new GetContactsAsyncTask(c.getUsername());
 
@@ -77,7 +101,9 @@ public class CustomerSignup extends AppCompatActivity {
 //                        Intent intent=new Intent(CustomerSignup.this,CustomerMainActivity.class);
 //                        intent.putExtra("name",f+l);
 //                        startActivity(intent);
-                        startActivity(new Intent(CustomerSignup.this,CustomerMainActivity.class));
+                        Intent i=new Intent(CustomerSignup.this,CustomerMainActivity.class);
+                        i.putExtra("Customer",c);
+                        startActivity(i);
                     }
                 }
                 else
@@ -100,11 +126,15 @@ public class CustomerSignup extends AppCompatActivity {
             HttpDataHandler hh=new HttpDataHandler();
             String json = "{\"username\":\"" + c.getUsername() +
                     "\",\"password\":\"" + c.getPassword() +
-                    "\",\"first_name\":\"" + c.getFirst() +
-                    "\",\"last_name\":\"" + c.getLast() +
+                    "\",\"fname\":\"" + c.getFname() +
+                    "\",\"contact\":\"" + c.getContact() +
+                    "\",\"flat\":\"" + c.getFlat() +
+                    "\",\"street\":\"" + c.getStreet() +
+                    "\",\"landmark\":\"" + c.getLandmark() +
+                    "\",\"lname\":\"" + c.getLname() +
                     "\",\"locality\":\"" + c.getLoc() +
                     "\",\"city\":\"" + c.getCity() +
-                    "\",\"pin\":\"" + c.getPin() +
+                    "\",\"zip\":\"" + c.getZip() +
                     "\",\"state\":\"" + c.getState() +"\"}";
             hh.postHTTPData(json);
             return false;

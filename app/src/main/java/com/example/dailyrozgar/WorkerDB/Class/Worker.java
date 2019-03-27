@@ -2,7 +2,27 @@ package com.example.dailyrozgar.WorkerDB.Class;
 
 public class Worker {
     private Id _id;
-    private String first,last,sex,phone,base,prof,loc,city,state,zip;
+    private String first;
+    private String last;
+    private String sex;
+    private String phone;
+    private String prof;;
+    private String base;
+    private String loc;
+    private String city;
+    private String state;
+    private String zip;
+    private String age;
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+
     private int forSex,forBase;
 
     public Id get_id() {

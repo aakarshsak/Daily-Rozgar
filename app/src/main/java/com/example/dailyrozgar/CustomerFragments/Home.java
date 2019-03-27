@@ -54,7 +54,7 @@ public class Home extends Fragment {
 
 
         datamodels=new ArrayList<>();
-        for(int i=0;i<7;i++)
+        for(int i=0;i<6;i++)
         {
             datamodels.add(new DataModel(MyData.titlearray[i],MyData._id[i],MyData.images[i],MyData.description[i]));
         }

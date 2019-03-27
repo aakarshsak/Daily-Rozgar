@@ -35,6 +35,7 @@
             android:background="@color/primary"
             android:padding="5dp"
             android:textColor="@color/primary_text"
+            android:inputType="textCapSentences"
             android:layout_marginHorizontal="6dp"
             android:id="@+id/customerUsername" />
         <TextView
@@ -78,6 +79,7 @@
             android:layout_height="wrap_content"
             android:background="@color/primary"
             android:padding="5dp"
+            android:inputType="textCapSentences"
             android:textColor="@color/primary_text"
             android:layout_marginHorizontal="6dp"
             android:id="@+id/customerFirstName" />
@@ -93,6 +95,7 @@
             android:layout_height="wrap_content"
             android:background="@color/primary"
             android:padding="5dp"
+            android:inputType="textCapSentences"
             android:textColor="@color/primary_text"
             android:layout_marginHorizontal="6dp"
             android:id="@+id/customerLastName" />
@@ -109,6 +112,7 @@
             android:layout_height="wrap_content"
             android:background="@color/primary"
             android:padding="5dp"
+            android:inputType="number"
             android:textColor="@color/primary_text"
             android:layout_marginHorizontal="6dp"
             android:id="@+id/customerContact" />
@@ -118,60 +122,14 @@
             android:text="Locality :"
             android:layout_marginTop="5dp"
             android:textColor="@color/secondary_text" />
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/primary"
             android:padding="5dp"
             android:textColor="@color/primary_text"
             android:layout_marginHorizontal="6dp"
-            android:id="@+id/customerLocality" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="City :"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/secondary_text" />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/primary"
-            android:padding="5dp"
-            android:textColor="@color/primary_text"
-            android:layout_marginHorizontal="6dp"
-            android:id="@+id/customerCity" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Zip :"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/secondary_text"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/primary"
-            android:padding="5dp"
-            android:textColor="@color/primary_text"
-            android:layout_marginHorizontal="6dp"
-            android:id="@+id/customerZip" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="State :"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/secondary_text" />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/primary"
-            android:padding="5dp"
-            android:textColor="@color/primary_text"
-            android:layout_marginHorizontal="6dp"
-            android:id="@+id/customerState" />
+            android:id="@+id/customerLocality"/>
 
         <LinearLayout
             android:layout_width="match_parent"

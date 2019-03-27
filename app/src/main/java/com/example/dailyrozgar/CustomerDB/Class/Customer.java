@@ -5,31 +5,7 @@ import java.io.Serializable;
 public class Customer implements Serializable {
 
     Id _id;
-    String first,last,loc,username,password,city,state,pin;
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getPin() {
-        return pin;
-    }
-
-    public void setPin(String pin) {
-        this.pin = pin;
-    }
+    String fname,lname,contact,flat,street,landmark,loc,username,password,city,state,zip;
 
     public Id get_id() {
         return _id;
@@ -39,20 +15,52 @@ public class Customer implements Serializable {
         this._id = _id;
     }
 
-    public String getFirst() {
-        return first;
+    public String getFname() {
+        return fname;
     }
 
-    public void setFirst(String first) {
-        this.first = first;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public String getLast() {
-        return last;
+    public String getLname() {
+        return lname;
     }
 
-    public void setLast(String last) {
-        this.last = last;
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String conatact) {
+        this.contact = conatact;
+    }
+
+    public String getFlat() {
+        return flat;
+    }
+
+    public void setFlat(String flat) {
+        this.flat = flat;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getLandmark() {
+        return landmark;
+    }
+
+    public void setLandmark(String landmark) {
+        this.landmark = landmark;
     }
 
     public String getLoc() {
@@ -77,5 +85,29 @@ public class Customer implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 }

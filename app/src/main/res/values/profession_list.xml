@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="profession_array">
+        <item>Electrician</item>
+        <item>Plumber</item>
+        <item>Painter</item>
+        <item>Carpenter</item>
+        <item>Gardener</item>
+        <item>House Keeper</item>
+    </string-array>
+</resources>

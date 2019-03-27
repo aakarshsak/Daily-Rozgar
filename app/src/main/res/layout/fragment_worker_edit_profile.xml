@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:background="@color/primary"
             android:padding="5dp"
+            android:inputType="textCapSentences"
             android:textColor="@color/primary_text"
             android:layout_marginHorizontal="6dp"
             android:id="@+id/workerFirstName"/>
@@ -39,6 +40,7 @@
             android:layout_height="wrap_content"
             android:background="@color/primary"
             android:padding="5dp"
+            android:inputType="textCapSentences"
             android:textColor="@color/primary_text"
             android:layout_marginHorizontal="6dp"
             android:id="@+id/workerLastName"/>
@@ -74,6 +76,25 @@
 
         </RadioGroup>
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Age :"
+            android:inputType="date"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/secondary_text"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:padding="5dp"
+            android:textColor="@color/primary_text"
+            android:layout_marginHorizontal="6dp"
+            android:id="@+id/dob"/>
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -86,6 +107,7 @@
             android:layout_height="wrap_content"
             android:background="@color/primary"
             android:padding="5dp"
+            android:inputType="number"
             android:textColor="@color/primary_text"
             android:layout_marginHorizontal="6dp"
             android:id="@+id/workerContact"/>
@@ -96,7 +118,7 @@
             android:layout_marginTop="5dp"
             android:textColor="@color/secondary_text"
             />
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/primary"
@@ -105,53 +127,53 @@
             android:layout_marginHorizontal="6dp"
             android:id="@+id/workerLocality"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="City :"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/secondary_text"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/primary"
-            android:padding="5dp"
-            android:textColor="@color/primary_text"
-            android:layout_marginHorizontal="6dp"
-            android:id="@+id/workerCity"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="City :"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:textColor="@color/secondary_text"-->
+            <!--/>-->
+        <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/primary"-->
+            <!--android:padding="5dp"-->
+            <!--android:textColor="@color/primary_text"-->
+            <!--android:layout_marginHorizontal="6dp"-->
+            <!--android:id="@+id/workerCity"/>-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Zip :"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/secondary_text"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/primary"
-            android:padding="5dp"
-            android:textColor="@color/primary_text"
-            android:layout_marginHorizontal="6dp"
-            android:id="@+id/workerZip"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Zip :"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:textColor="@color/secondary_text"-->
+            <!--/>-->
+        <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/primary"-->
+            <!--android:padding="5dp"-->
+            <!--android:textColor="@color/primary_text"-->
+            <!--android:layout_marginHorizontal="6dp"-->
+            <!--android:id="@+id/workerZip"/>-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="State :"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/secondary_text"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/primary"
-            android:padding="5dp"
-            android:textColor="@color/primary_text"
-            android:layout_marginHorizontal="6dp"
-            android:id="@+id/workerState"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="State :"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:textColor="@color/secondary_text"-->
+            <!--/>-->
+        <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/primary"-->
+            <!--android:padding="5dp"-->
+            <!--android:textColor="@color/primary_text"-->
+            <!--android:layout_marginHorizontal="6dp"-->
+            <!--android:id="@+id/workerState"/>-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -159,12 +181,11 @@
             android:layout_marginTop="5dp"
             android:textColor="@color/secondary_text"
             />
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/primary"
             android:padding="5dp"
-            android:textColor="@color/primary_text"
             android:layout_marginHorizontal="6dp"
             android:id="@+id/workerProfession"/>
 
@@ -180,40 +201,11 @@
             android:layout_height="wrap_content"
             android:background="@color/primary"
             android:padding="5dp"
+            android:inputType="number"
             android:textColor="@color/primary_text"
             android:layout_marginHorizontal="6dp"
             android:id="@+id/workerBasePrice"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Negotiable :"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/secondary_text"
-            />
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/grp2">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yes"
-                android:id="@+id/negoYes"
-                android:buttonTint="@color/primary"
-                android:textColor="@color/secondary_text"/>
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No"
-                android:id="@+id/negoNo"
-                android:buttonTint="@color/primary"
-                android:textColor="@color/secondary_text"/>
-
-        </RadioGroup>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

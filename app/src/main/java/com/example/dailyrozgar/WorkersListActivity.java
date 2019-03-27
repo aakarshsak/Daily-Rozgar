@@ -24,7 +24,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class WorkersListActivity extends AppCompatActivity {
@@ -37,7 +36,6 @@ public class WorkersListActivity extends AppCompatActivity {
     CardView cardView;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
-    List<Worker> workers=new ArrayList<Worker>();
     TextView test;
 
     @Override
@@ -92,8 +90,8 @@ public class WorkersListActivity extends AppCompatActivity {
          {
              this.s=s;
          }
-        @Override
-        protected ArrayList<Worker> doInBackground(Worker... arg0) {
+         @Override
+         protected ArrayList<Worker> doInBackground(Worker... arg0) {
 
             ArrayList<Worker> workers = new ArrayList<>();
             try {
@@ -121,20 +119,17 @@ public class WorkersListActivity extends AppCompatActivity {
                 BasicDBList contacts = (BasicDBList) dbObj.get("DB_output");
                 for (Object obj : contacts) {
                     DBObject userObj = (DBObject) obj;
-                    String pro=userObj.get("profession").toString();
+                    String pro=userObj.get("occupation").toString();
                     if(pro.equals(s)) {
                         Worker temp = new Worker();
-                        temp.setBase(userObj.get("base_price").toString());
-                        temp.setFirst(userObj.get("first_name").toString());
-                        temp.setLast(userObj.get("last_name").toString());
-                        temp.setPhone(userObj.get("contact_no").toString());
-                        temp.setLoc(userObj.get("locality").toString());
-                        temp.setProf(userObj.get("profession").toString());
+                        temp.setBase(userObj.get("bamnt").toString());
+                        temp.setFirst(userObj.get("firstname").toString());
+                        temp.setLast(userObj.get("lastname").toString());
+                        temp.setPhone(userObj.get("contactno").toString());
+                        temp.setLoc(userObj.get("area").toString());
+                        temp.setProf(userObj.get("occupation").toString());
                         workers.add(temp);
-
                     }
-
-
 
                 }
 

@@ -37,6 +37,9 @@ public class CustomerMainActivity extends AppCompatActivity {
         Intent i = getIntent();
         Customer c=(Customer)i.getSerializableExtra("Customer");
 
+//        Customer c=new Customer();
+//        c.setFname("Aakarsh");
+//        c.setLname("SInha");
 
         //fragment initialisation
         loadFragment(new Home());
@@ -51,7 +54,7 @@ public class CustomerMainActivity extends AppCompatActivity {
         ActionBar actionbar=getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
-        actionbar.setTitle(c.getFirst()+" "+c.getLast());
+        actionbar.setTitle(c.getFname()+" "+c.getLname());
 
 
         //Drawer NAvigation view setup
