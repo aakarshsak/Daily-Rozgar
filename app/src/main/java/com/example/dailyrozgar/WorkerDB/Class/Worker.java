@@ -1,7 +1,13 @@
 package com.example.dailyrozgar.WorkerDB.Class;
 
-public class Worker {
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class Worker implements Serializable {
     private Id _id;
+    String username;
+    String password;
     private String first;
     private String last;
     private String sex;
@@ -24,6 +30,22 @@ public class Worker {
 
 
     private int forSex,forBase;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Id get_id() {
         return _id;

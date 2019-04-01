@@ -11,6 +11,8 @@
         android:roundIcon="@drawable/test_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".WorkerSignup"></activity>
+        <activity android:name=".WorkerLogin" />
         <activity android:name=".CustomerSignup" />
         <activity android:name=".CustomerLogin" />
         <activity android:name=".WorkerMainActivity" />
@@ -19,7 +21,9 @@
         <activity
             android:name=".WorkersListActivity"
             android:label="Plumbers" />
-        <activity android:name=".Splash_Screen" android:noHistory="true">
+        <activity
+            android:name=".Splash_Screen"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

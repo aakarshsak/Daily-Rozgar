@@ -40,7 +40,7 @@ public class Home extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home,container,false);
 
-
+        String username=getArguments().getString("username");
         recyclerView=view.findViewById(R.id.homeRecyclerView);
         recyclerView.setHasFixedSize(true);
         cardView=view.findViewById(R.id.homeCardView);
@@ -59,7 +59,7 @@ public class Home extends Fragment {
             datamodels.add(new DataModel(MyData.titlearray[i],MyData._id[i],MyData.images[i],MyData.description[i]));
         }
         //Attaching to the adapter
-        adapter=new CustomAdapter(datamodels);
+        adapter=new CustomAdapter(datamodels,username);
         recyclerView.setAdapter(adapter);
 
 

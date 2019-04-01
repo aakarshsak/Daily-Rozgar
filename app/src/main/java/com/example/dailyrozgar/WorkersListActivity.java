@@ -53,13 +53,14 @@ public class WorkersListActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         String s=i.getStringExtra("Profession");
+        String username = i.getStringExtra("Username");
 
         //merging toolbar with action bar
         setSupportActionBar(toolbar);
         ActionBar actionbar=getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
-        actionbar.setTitle(s);
+        actionbar.setTitle(s + username);
 
 
         layoutManager=new LinearLayoutManager(this);
@@ -69,7 +70,7 @@ public class WorkersListActivity extends AppCompatActivity {
 
         GetContactsAsyncTask task = new GetContactsAsyncTask(s);
         try {
-            adapter=new CustomAdapter(task.execute().get());
+            adapter=new CustomAdapter(task.execute().get(),username);
             recyclerView.setAdapter(adapter);
 
             Toast.makeText(this, "Fetched from MongoDB!!", Toast.LENGTH_SHORT).show();

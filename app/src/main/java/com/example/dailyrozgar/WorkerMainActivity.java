@@ -1,6 +1,7 @@
 package com.example.dailyrozgar;
 
-import android.drm.DrmStore;
+import android.content.Intent;
+
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -13,8 +14,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
+
+import com.example.dailyrozgar.WorkerDB.Class.Worker;
 import com.example.dailyrozgar.WorkerFragments.History;
 import com.example.dailyrozgar.WorkerFragments.Home;
 import com.example.dailyrozgar.WorkerFragments.MyProfile;
@@ -27,7 +29,15 @@ public class WorkerMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.worker_main);
 
-        loadFragment(new Home());
+
+        Intent i = getIntent();
+        Worker w=(Worker) i.getSerializableExtra("Worker");
+
+        Bundle bundle=new Bundle();
+        bundle.putString("username",w.getUsername());
+        Home home=new Home();
+        home.setArguments(bundle);
+        loadFragment(home);
 
 
         toolbar=findViewById(R.id.toolBar);
@@ -37,6 +47,7 @@ public class WorkerMainActivity extends AppCompatActivity {
         ActionBar actionBar=getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle(w.getFirst()+ " "+w.getLast());
 
         NavigationView navigationView=findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item android:state_pressed="true">
+
+        <shape android:shape="oval">
+            <solid android:color="#e7e7e7"/>
+            <stroke android:width="2dp"
+                android:color="@android:color/holo_red_light"/>
+            <corners
+                android:radius="10dp"/>
+        </shape>
+    </item>
+
+
+    <item >
+
+        <shape android:shape="rectangle">
+
+            <size android:width="15dp"
+                android:height="15dp"/>
+
+            <solid android:color="@android:color/holo_red_light" />
+        </shape>
+    </item>
+
+</selector>

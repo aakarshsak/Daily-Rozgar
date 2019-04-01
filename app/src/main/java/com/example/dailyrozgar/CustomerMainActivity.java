@@ -37,12 +37,17 @@ public class CustomerMainActivity extends AppCompatActivity {
         Intent i = getIntent();
         Customer c=(Customer)i.getSerializableExtra("Customer");
 
+
 //        Customer c=new Customer();
 //        c.setFname("Aakarsh");
 //        c.setLname("SInha");
 
         //fragment initialisation
-        loadFragment(new Home());
+        Bundle bundle=new Bundle();
+        bundle.putString("username",c.getUsername());
+        Home home=new Home();
+        home.setArguments(bundle);
+        loadFragment(home);
 
         //initializing all the variables needed
         toolbar=findViewById(R.id.toolBar);

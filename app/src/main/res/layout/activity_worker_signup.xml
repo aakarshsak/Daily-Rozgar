@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WorkerSignup">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_light"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Username :"
+            android:textColor="@color/secondary_text"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:padding="5dp"
+            android:inputType="textCapSentences"
+            android:textColor="@color/primary_text"
+            android:layout_marginHorizontal="6dp"
+            android:id="@+id/workerRepass"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Username :"
+            android:textColor="@color/secondary_text"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:padding="5dp"
+            android:inputType="textCapSentences"
+            android:textColor="@color/primary_text"
+            android:layout_marginHorizontal="6dp"
+            android:id="@+id/workerUsername"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password :"
+            android:textColor="@color/secondary_text"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:padding="5dp"
+            android:inputType="textCapSentences"
+            android:textColor="@color/primary_text"
+            android:layout_marginHorizontal="6dp"
+            android:id="@+id/workerPassword"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="First Name :"
+            android:textColor="@color/secondary_text"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:padding="5dp"
+            android:inputType="textCapSentences"
+            android:textColor="@color/primary_text"
+            android:layout_marginHorizontal="6dp"
+            android:id="@+id/workerFirstName"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Last Name :"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/secondary_text"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:padding="5dp"
+            android:inputType="textCapSentences"
+            android:textColor="@color/primary_text"
+            android:layout_marginHorizontal="6dp"
+            android:id="@+id/workerLastName"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sex :"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/secondary_text"
+            />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/grp1">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                android:id="@+id/male"
+                android:buttonTint="@color/primary"
+                android:textColor="@color/secondary_text"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                android:id="@+id/female"
+                android:buttonTint="@color/primary"
+                android:textColor="@color/secondary_text"/>
+
+        </RadioGroup>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Age :"
+            android:inputType="date"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/secondary_text"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:padding="5dp"
+            android:textColor="@color/primary_text"
+            android:layout_marginHorizontal="6dp"
+            android:id="@+id/dob"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contact No. :"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/secondary_text"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:padding="5dp"
+            android:inputType="number"
+            android:textColor="@color/primary_text"
+            android:layout_marginHorizontal="6dp"
+            android:id="@+id/workerContact"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Locality :"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/secondary_text"
+            />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:padding="5dp"
+            android:textColor="@color/primary_text"
+            android:layout_marginHorizontal="6dp"
+            android:id="@+id/workerLocality"/>
+
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="City :"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:textColor="@color/secondary_text"-->
+        <!--/>-->
+        <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/primary"-->
+        <!--android:padding="5dp"-->
+        <!--android:textColor="@color/primary_text"-->
+        <!--android:layout_marginHorizontal="6dp"-->
+        <!--android:id="@+id/workerCity"/>-->
+
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Zip :"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:textColor="@color/secondary_text"-->
+        <!--/>-->
+        <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/primary"-->
+        <!--android:padding="5dp"-->
+        <!--android:textColor="@color/primary_text"-->
+        <!--android:layout_marginHorizontal="6dp"-->
+        <!--android:id="@+id/workerZip"/>-->
+
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="State :"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:textColor="@color/secondary_text"-->
+        <!--/>-->
+        <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/primary"-->
+        <!--android:padding="5dp"-->
+        <!--android:textColor="@color/primary_text"-->
+        <!--android:layout_marginHorizontal="6dp"-->
+        <!--android:id="@+id/workerState"/>-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profession :"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/secondary_text"
+            />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:padding="5dp"
+            android:layout_marginHorizontal="6dp"
+            android:id="@+id/workerProfession"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Base Price :"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/secondary_text"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:padding="5dp"
+            android:inputType="number"
+            android:textColor="@color/primary_text"
+            android:layout_marginHorizontal="6dp"
+            android:id="@+id/workerBasePrice"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="40"
+            android:layout_marginTop="5dp">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="19"
+                android:background="@color/divider"
+                android:text="Sumbit"
+                android:id="@+id/workerSubmitButton"
+                android:textColor="@color/primary_text"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"></LinearLayout>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="19"
+                android:text="Reset"
+                android:textColor="@color/primary_text"
+                android:background="@color/divider"
+                android:id="@+id/workerResetButton"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -20,9 +20,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     private ArrayList<DataModel> dataset;
     String s;
+    String username;
 
-    public CustomAdapter(ArrayList<DataModel> dataset) {
+    public CustomAdapter(ArrayList<DataModel> dataset,String username) {
         this.dataset = dataset;
+        this.username = username;
     }
 
     @NonNull
@@ -64,6 +66,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                     s = dataset.get(getAdapterPosition()).getTitle().toString();
                     Intent i=new Intent(v.getContext(),WorkersListActivity.class);
                     i.putExtra("Profession",s);
+                    i.putExtra("Username",username);
                     switch(getAdapterPosition())
                     {
                         case 0: v.getContext().startActivity(i);break;
