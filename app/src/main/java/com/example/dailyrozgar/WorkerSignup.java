@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dailyrozgar.MyDB.Helper;
 import com.example.dailyrozgar.WorkerDB.Class.Worker;
 import com.example.dailyrozgar.WorkerDB.HttpDataHandler;
 
@@ -148,6 +149,9 @@ public class WorkerSignup extends AppCompatActivity {
                         Toast.makeText(WorkerSignup.this, "Signed Up Successsfully", Toast.LENGTH_LONG).show();
 
                         new PostData().execute(worker);
+
+                        Helper helper=new Helper(WorkerSignup.this);
+                        helper.updateCurrent(worker.getUsername(),helper.getCurrent(1),2);
 //                        Intent intent=new Intent(CustomerSignup.this,CustomerMainActivity.class);
 //                        intent.putExtra("name",f+l);
 //                        startActivity(intent);

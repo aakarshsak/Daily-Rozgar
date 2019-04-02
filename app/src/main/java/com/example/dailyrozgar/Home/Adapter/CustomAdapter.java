@@ -1,6 +1,7 @@
 package com.example.dailyrozgar.Home.Adapter;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -67,6 +68,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                     Intent i=new Intent(v.getContext(),WorkersListActivity.class);
                     i.putExtra("Profession",s);
                     i.putExtra("Username",username);
+
                     switch(getAdapterPosition())
                     {
                         case 0: v.getContext().startActivity(i);break;

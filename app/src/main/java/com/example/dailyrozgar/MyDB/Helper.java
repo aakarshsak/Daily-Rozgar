@@ -15,13 +15,14 @@ import java.util.ArrayList;
 
 public class Helper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "DailyRozgar1";
+    private static final String DATABASE_NAME = "DailyRozgar2";
     private static final String REQUEST = "Request";
     private static final String TIME_TO = "timeTo";
     private static final String CUSTOMER = "customer";
     private static final String WORKER = "worker";
     private static final String TIME_FROM = "timeFrom";
     private static final String ACCEPT = "Accept";
+    private static final String CURRENT = "Current";
 
     public Helper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -39,6 +40,13 @@ public class Helper extends SQLiteOpenHelper {
                 + CUSTOMER + " TEXT," + WORKER + " TEXT,"
                 + TIME_FROM + " TEXT," + TIME_TO + " TEXT)";
         db.execSQL(CREATE_ACCEPT_TABLE);
+        String CREATE_CURRENT_TABLE = "CREATE TABLE " + CURRENT + "("
+                + CUSTOMER + " TEXT," + WORKER + " TEXT)";
+        db.execSQL(CREATE_CURRENT_TABLE);
+//        ContentValues contentValues=new ContentValues();
+//        contentValues.put(CUSTOMER,"aakarshsak");
+//        contentValues.put(WORKER,"ashish111");
+//        db.insert(CURRENT,null,contentValues);
     }
 
     // Upgrading database
@@ -67,6 +75,20 @@ public class Helper extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
+    public void addCurrent(String c,String w) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(CUSTOMER, c); // Contact Name
+        values.put(WORKER, w);
+
+
+        // Inserting Row
+        db.insert(CURRENT, null, values);
+        //2nd argument is String containing nullColumnHack
+        db.close(); // Closing database connection
+    }
+
     public void addAccept(Accept accept) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -80,6 +102,35 @@ public class Helper extends SQLiteOpenHelper {
         db.insert(ACCEPT, null, values);
         //2nd argument is String containing nullColumnHack
         db.close(); // Closing database connection
+    }
+
+    public int updateCurrent(String newV,String old,int n) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String s;
+        if(n==1){
+            s=new String(CUSTOMER);
+        }
+        else{
+            s=new String(WORKER);
+        }
+
+        ContentValues values = new ContentValues();
+
+        values.put(s, newV);
+
+        // updating row
+        return db.update(CURRENT, values, s + " = ?",
+                new String[] { old });
+    }
+
+    public String getCurrent(int n){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM "+CURRENT,null);
+
+        cursor.moveToFirst();
+        String s=cursor.getString(n);
+        return s;
     }
 
 

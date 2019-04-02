@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.dailyrozgar.CustomerDB.Class.Customer;
 import com.example.dailyrozgar.CustomerDB.Common;
 import com.example.dailyrozgar.CustomerDB.HttpDataHandler;
+import com.example.dailyrozgar.MyDB.Helper;
 import com.mongodb.BasicDBList;
 import com.mongodb.DBObject;
 
@@ -101,6 +102,9 @@ public class CustomerSignup extends AppCompatActivity {
                         Toast.makeText(CustomerSignup.this, "Signed Up Successsfully", Toast.LENGTH_LONG).show();
 
                         new PostData().execute(c);
+
+                        Helper helper=new Helper(CustomerSignup.this);
+                        helper.updateCurrent(c.getUsername(),helper.getCurrent(0),1);
 //                        Intent intent=new Intent(CustomerSignup.this,CustomerMainActivity.class);
 //                        intent.putExtra("name",f+l);
 //                        startActivity(intent);

@@ -29,13 +29,14 @@ public class CustomerMainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     TextView test;
+    Customer c;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_main);
 
         Intent i = getIntent();
-        Customer c=(Customer)i.getSerializableExtra("Customer");
+        c =(Customer)i.getSerializableExtra("Customer");
 
 
 //        Customer c=new Customer();
@@ -67,13 +68,18 @@ public class CustomerMainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Bundle b=new Bundle();
+                b.putString("username",c.getUsername());
+                Fragment h=null;
                 switch(item.getItemId())
                 {
-                    case R.id.home:loadFragment(new Home());break;
-                    case R.id.myProfile:loadFragment(new MyProfile());break;
-                    case R.id.history:loadFragment(new History());break;
-                    case R.id.logout:startActivity(new Intent(CustomerMainActivity.this,StartScreen.class));
+                    case R.id.home:h=new Home();h.setArguments(b);loadFragment(h);break;
+                    case R.id.myProfile: h=new MyProfile();h.setArguments(b);loadFragment(h);break;
+                    case R.id.history:h=new History();h.setArguments(b);loadFragment(h);break;
+                    case R.id.logout:startActivity(new Intent(CustomerMainActivity.this,CustomerLogin.class));
+
                 }
+
                 item.setChecked(true);
                 drawerLayout.closeDrawers();
                 return true;
@@ -87,15 +93,19 @@ public class CustomerMainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                Fragment fragment=null;
+                Bundle b=new Bundle();
+                b.putString("username",c.getUsername());
+                Fragment h=null;
                 switch(item.getItemId())
                 {
-                    case R.id.myProfile:fragment=new MyProfile();break;
-                    case R.id.home:fragment=new Home();break;
-                    case R.id.history:fragment=new History();break;
+                    case R.id.home:h=new Home();break;
+                    case R.id.myProfile: h=new MyProfile();break;
+                    case R.id.history:h=new History();break;
+                    case R.id.logout:startActivity(new Intent(CustomerMainActivity.this,CustomerLogin.class));
                 }
+                h.setArguments(b);
 
-                return loadFragment(fragment);
+                return loadFragment(h);
             }
         });
 

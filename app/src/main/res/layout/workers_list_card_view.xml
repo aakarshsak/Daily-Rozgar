@@ -4,15 +4,16 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:tag="cards_main_container"
+    android:background="@color/primary_dark"
     android:layout_margin="0dp">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="2dp"
+        android:layout_margin="4dp"
         app:cardCornerRadius="7dp"
         android:id="@+id/workerListCardView"
-        android:elevation="2dp">
+        android:elevation="4dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -29,11 +30,47 @@
                 android:text="SKULL"
                 android:textStyle="bold"
                 android:textAllCaps="true"
-                android:textSize="18dp"
-                android:fontFamily="casual"
+                android:textSize="21dp"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/primary_text"
-                android:id="@+id/workerName"/>
+                android:id="@+id/workerName"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AGE : "
+                android:textSize="20dp"
+                android:fontFamily="serif-monospace"
+                android:layout_below="@id/workerName"
+                android:textColor="@color/primary_text"
+                android:id="@+id/a"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Age VAlue"
+                android:layout_toRightOf="@id/a"
+                android:textSize="24dp"
+                android:fontFamily="serif-monospace"
+                android:layout_below="@id/workerName"
+                android:textColor="@color/primary_text"
+                android:id="@+id/workerAge"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif-monospace"
+                android:typeface="monospace"
+                android:textColor="@color/primary_text"
+                android:text="Rs : "
+                android:textSize="20dp"
+                android:layout_below="@id/workerAge"
+                android:id="@+id/p"
+                android:layout_marginBottom="5dp"
+                />
 
             <TextView
                 android:layout_width="match_parent"
@@ -42,7 +79,9 @@
                 android:typeface="monospace"
                 android:textColor="@color/primary_text"
                 android:text="Price"
-                android:layout_below="@id/workerName"
+                android:layout_toRightOf="@id/p"
+                android:textSize="20dp"
+                android:layout_below="@id/workerAge"
                 android:id="@+id/workerPrice"
                 android:layout_marginBottom="5dp"
                 />
@@ -54,6 +93,7 @@
                 android:typeface="monospace"
                 android:textColor="@color/primary_text"
                 android:text="Location"
+                android:textSize="20dp"
                 android:layout_below="@id/workerPrice"
                 android:id="@+id/workerLocation"
                 android:layout_marginBottom="5dp"
@@ -65,6 +105,7 @@
                 android:fontFamily="serif-monospace"
                 android:typeface="monospace"
                 android:textColor="@color/icons"
+                android:textSize="20dp"
                 android:text="Selected Time"
                 android:layout_below="@id/workerLocation"
                 android:id="@+id/selectedTime"
@@ -77,22 +118,23 @@
                 android:typeface="monospace"
                 android:textColor="@color/icons"
                 android:text="Contact"
+                android:textSize="20dp"
                 android:layout_below="@id/selectedTime"
                 android:id="@+id/selectedTimeValue"
                 android:layout_marginBottom="5dp"
                 />
 
             <RelativeLayout
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="45dp"
                 android:layout_centerVertical="true"
                 android:id="@+id/reqButtonRel">
 
                 <Button
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:background="@drawable/req_btn_bg"
                     android:layout_centerInParent="true"
                     android:id="@+id/reqButton"
@@ -112,6 +154,41 @@
                     android:id="@+id/reqCheck"/>
 
             </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="45dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/acceptedRel">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Accepted"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textSize="19dp"
+                    android:textColor="@color/icons"
+                    android:id="@+id/accepted"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="Cancel"
+                    android:textSize="19dp"
+                    android:textColor="#4444ff"
+                    android:layout_below="@id/accepted"
+                    android:background="@drawable/can_btn_bg"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/cancel"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
 
             <!--<View-->
             <!--android:layout_width="match_parent"-->

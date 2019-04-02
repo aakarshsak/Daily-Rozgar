@@ -86,6 +86,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 accRel.setVisibility(View.INVISIBLE);
                 rejButtonRel.setVisibility(View.INVISIBLE);
 
+                Helper helper=new Helper(view.getContext());
+                helper.deleteRequest(dataset.get(position));
+
+
+
             }
         });
 
@@ -114,7 +119,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
 
-    public class GetContactsAsyncTask extends AsyncTask<Customer, Void, Customer> {
+    public static class GetContactsAsyncTask extends AsyncTask<Customer, Void, Customer> {
         String server_output = null;
         String temp_output = null;
         String u;

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.dailyrozgar.CustomerDB.Class.Customer;
 import com.example.dailyrozgar.CustomerDB.Common;
+import com.example.dailyrozgar.MyDB.Helper;
 import com.mongodb.BasicDBList;
 import com.mongodb.DBObject;
 
@@ -71,6 +72,9 @@ public class CustomerLogin extends AppCompatActivity {
                 ///checks if username is there in the database or not and returns true if there is
                 if(c!=null)
                 {
+
+                    Helper helper=new Helper(CustomerLogin.this);
+                    helper.updateCurrent(c.getUsername(),helper.getCurrent(0),1);
                     Intent i=new Intent(CustomerLogin.this,CustomerMainActivity.class);
                     i.putExtra("Customer",c);
                     startActivity(i);//new Intent(CustomerLogin.this,CustomerMainActivity.class));
@@ -91,7 +95,7 @@ public class CustomerLogin extends AppCompatActivity {
         });
     }
 
-    public class GetContactsAsyncTask extends AsyncTask<Customer, Void, Customer> {
+    public static class GetContactsAsyncTask extends AsyncTask<Customer, Void, Customer> {
         String server_output = null;
         String temp_output = null;
         String u,p;

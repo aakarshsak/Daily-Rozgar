@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dailyrozgar.CustomerDB.Class.Customer;
+import com.example.dailyrozgar.MyDB.Helper;
 import com.example.dailyrozgar.WorkerDB.Class.Worker;
 import com.example.dailyrozgar.WorkerDB.Common;
 import com.mongodb.BasicDBList;
@@ -71,6 +72,8 @@ public class WorkerLogin extends AppCompatActivity {
                 ///checks if username is there in the database or not and returns true if there is
                 if(w!=null)
                 {
+                    Helper helper=new Helper(WorkerLogin.this);
+                    helper.updateCurrent(w.getUsername(),helper.getCurrent(1),2);
                     Intent i=new Intent(WorkerLogin.this, WorkerMainActivity.class);
                     i.putExtra("Worker",w);
                     startActivity(i);//new Intent(CustomerLogin.this,CustomerMainActivity.class));

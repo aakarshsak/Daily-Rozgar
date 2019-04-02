@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -33,6 +34,7 @@ public class WorkerMainActivity extends AppCompatActivity {
         Intent i = getIntent();
         Worker w=(Worker) i.getSerializableExtra("Worker");
 
+        Log.d("E:",w.getUsername());
         Bundle bundle=new Bundle();
         bundle.putString("Username",w.getUsername());
         Home home=new Home();
@@ -53,6 +55,17 @@ public class WorkerMainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                item.setChecked(true);
+                Bundle b=new Bundle();
+                b.putString("username",w.getUsername());
+                Fragment h=null;
+                switch(item.getItemId())
+                {
+                    case R.id.home:h=new Home();h.setArguments(b);loadFragment(h);break;
+                    case R.id.myProfile: h=new MyProfile();h.setArguments(b);loadFragment(h);break;
+                    case R.id.history:h=new History();h.setArguments(b);loadFragment(h);break;
+                    case R.id.logout:startActivity(new Intent(WorkerMainActivity.this,WorkerLogin.class));
+                }
                 item.setChecked(true);
                 drawerLayout.closeDrawers();
                 return true;

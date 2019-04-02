@@ -9,4 +9,5 @@
     <color name="selected_icon">#33691e</color>
     <color name="divider">#bdbdbd</color>
     <color name="accent">#424242</color>
+    <color name="shade_change">#e6ee9c</color>
 </resources>

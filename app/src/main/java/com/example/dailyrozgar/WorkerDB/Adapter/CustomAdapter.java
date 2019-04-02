@@ -20,6 +20,8 @@ import com.example.dailyrozgar.R;
 import com.example.dailyrozgar.WorkerDB.Class.Worker;
 
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 
@@ -59,24 +61,40 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         TextView t=holder.t;
         TextView selTime=holder.selTime;
         RelativeLayout norRel=holder.norRel;
+        TextView age=holder.age;
+        TextView accepted=holder.accepted;
+        Button can=holder.cancel;
+        RelativeLayout aRel=holder.aRel;
+
 
         name.setText(dataset.get(position).getFirst() + " " + dataset.get(position).getLast());
         price.setText(dataset.get(position).getBase());
         location.setText(dataset.get(position).getLoc());
+        age.setText(dataset.get(position).getAge());
         imgC.setVisibility(View.INVISIBLE);
         imgP.setVisibility(View.VISIBLE);
         timeRel.setVisibility(View.INVISIBLE);
         t.setVisibility(View.INVISIBLE);
         selTime.setVisibility(View.INVISIBLE);
-
+        aRel.setVisibility(View.INVISIBLE);
+        can.setEnabled(false);
 
 
         Helper oldHelper=new Helper(view.getContext());
 
         Accept a=oldHelper.getAccept(username,dataset.get(position).getUsername());
         if(a!=null){
-            reqButton.setVisibility(View.INVISIBLE);
+            buttonRel.setVisibility(View.INVISIBLE);
             reqButton.setEnabled(false);
+            aRel.setVisibility(View.VISIBLE);
+            can.setEnabled(true);
+
+            can.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    
+                }
+            });
 
         }
         else{
@@ -180,14 +198,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView name,price,location,selTime,t;
+        TextView name,price,location,selTime,t,accepted;
         Button reqButton;
         RelativeLayout buttonRel;
         ImageView c,p;
         TimePicker timePicker;
         Button reqConfirm;
         Button reqReject;
-        RelativeLayout timeRel,norRel;
+        TextView age;
+        Button cancel;
+        RelativeLayout timeRel,norRel,aRel;
         public MyViewHolder(View itemView) {
             super(itemView);
             this.name = itemView.findViewById(R.id.workerName);
@@ -204,6 +224,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             this.selTime=itemView.findViewById(R.id.selectedTimeValue);
             this.t=itemView.findViewById(R.id.selectedTime);
             this.norRel=itemView.findViewById(R.id.norRel);
+            this.age=itemView.findViewById(R.id.workerAge);
+            this.aRel=itemView.findViewById(R.id.acceptedRel);
+            this.cancel=itemView.findViewById(R.id.cancel);
+            this.accepted=itemView.findViewById(R.id.accepted);
             itemView.setTag(itemView);
         }
     }
