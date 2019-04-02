@@ -63,22 +63,22 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         location.setText(dataset.get(position).getLoc());
         imgC.setVisibility(View.INVISIBLE);
         imgP.setVisibility(View.VISIBLE);
+        timeRel.setVisibility(View.INVISIBLE);
 
-        MyDatabase myDatabase=new MyDatabase(view.getContext());
-        Cursor resultSet =myDatabase.getParticularRequest(dataset.get(position).getUsername()+"."+username);
-        resultSet.moveToFirst();
-        Request req0=new Request();
-        req0.setTo(resultSet.getString(2));
-        req0.setFrom(resultSet.getString(1));
-        if(resultSet!=null){
-            imgP.setVisibility(View.INVISIBLE);
-            imgC.setVisibility(View.VISIBLE);
-            reqButton.setEnabled(false);
-            selTime.setVisibility(View.VISIBLE);
-            selTime.setText(req0.getFrom()+" - "+req0.getTo());
-            t.setVisibility(View.INVISIBLE);
-        }
-        else {
+//        MyDatabase myDatabase=new MyDatabase(view.getContext());
+//        Cursor resultSet =myDatabase.getParticularRequest(dataset.get(position).getUsername()+"."+username);
+//        Request req0=new Request();
+//        if(resultSet.getCount()>0){
+//            req0.setTo(resultSet.getString(2));
+//            req0.setFrom(resultSet.getString(1));
+//            imgP.setVisibility(View.INVISIBLE);
+//            imgC.setVisibility(View.VISIBLE);
+//            reqButton.setEnabled(false);
+//            selTime.setVisibility(View.VISIBLE);
+//            selTime.setText(req0.getFrom()+" - "+req0.getTo());
+//            t.setVisibility(View.INVISIBLE);
+//        }
+
             reqButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -148,7 +148,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
                 }
             });
-        }
+
     }
 
     @Override

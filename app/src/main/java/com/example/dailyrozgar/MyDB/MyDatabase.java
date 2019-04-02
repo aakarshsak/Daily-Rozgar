@@ -6,9 +6,21 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.dailyrozgar.MyDB.RequestDB.Request;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class MyDatabase {
 
     public static final String MY_DB = "DatabaseTabs";
+    public static final String REQUEST = "Request";
+    public static final String ACCEPT = "Accept";
+    public static final String CUSTOMER = "customer";
+    public static final String WORKER = "worker";
+    public static final String TO = "timeTo";
+    public static final String FROM = "timeFrom";
 
     SQLiteDatabase sdb;
     Helper myHelper;
@@ -27,37 +39,52 @@ public class MyDatabase {
     }
 
     public void insertRequest(ContentValues cv) {
-        sdb.insert("Request", null, cv);
-        Log.i("DatabaseTabs", "Data Inserted in Accept");
+        sdb.insert(REQUEST, null, cv);
+        Log.i("DatabaseTabs", "Data Inserted in Request");
     }
 
     public void insertAccept(ContentValues cv) {
-        sdb.insert("Accept", null, cv);
-        Log.i("DatabaseTabs", "Data Inserted in Request");
+        sdb.insert(ACCEPT, null, cv);
+        Log.i("DatabaseTabs", "Data Inserted in Accept");
     }
-    public Cursor getParticularRequest(String cusWorker){
+    public Cursor getParticularRequest(String cus,String work){
         sdb=myHelper.getReadableDatabase();
-        String whereArgs[] = new String[]{cusWorker};
-        cursor=sdb.query("Request",null,"cusWorker=?",whereArgs,null,null,null);
+        String whereArgs[] = new String[]{cus,work};
+        cursor=sdb.rawQuery("SELECT * FROM Request WHERE customer=? AND worker=?",whereArgs);
         return cursor;
     }
 
-    public Cursor getParticularAccept(String cusWorker){
+    public Cursor getParticularAccept(String cus,String work){
         sdb=myHelper.getReadableDatabase();
-        String whereArgs[] = new String[]{cusWorker};
-        cursor=sdb.query("Accept",null,"cusWorker=?",whereArgs,null,null,null);
+        String whereArgs[] = new String[]{cus,work};
+        cursor=sdb.rawQuery("SELECT * FROM Accept WHERE customer=? AND worker=?",whereArgs);
         return cursor;
     }
-    public Cursor getAllRequest() {
-        sdb = myHelper.getReadableDatabase();
-        cursor = sdb.query("Request", null, null, null, null, null, null);
-        return cursor;
-    }
+    public ArrayList<Request> getAllRequests(String worker) {
+        ArrayList<Request> requestList = new ArrayList<Request>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM "+REQUEST;
 
-    public Cursor getAllAccept() {
-        sdb = myHelper.getReadableDatabase();
-        cursor = sdb.query("Accept", null, null, null, null, null, null);
-        return cursor;
+        SQLiteDatabase db = myHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                if(worker.equals(cursor.getString(1)))
+                {
+                    Request request = new Request();
+                    request.setCustomer(cursor.getString(0));
+                    request.setWorker(cursor.getString(1));
+                    request.setFrom(cursor.getString(2));
+                    request.setTo(cursor.getString(3));
+                    // Adding contact to list
+                    requestList.add(request);
+                }
+            } while (cursor.moveToNext());
+        }
+
+        return requestList;
     }
 
     public void deleteRequest(String cusUser) {

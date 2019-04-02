@@ -13,9 +13,9 @@ public class Helper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table Request(cusWorker text primary key,timeTo text,timeFrom text)");
+        db.execSQL("create table Request(customer text ,worker text ,timeFrom text,timeTo text)");
         Log.i("DatabaseTabs","Request Database Created");
-        db.execSQL("create table Accept(cusWorker text primary key,timeTo text,timeFrom text)");
+        db.execSQL("create table Accept(cusWorker text ,worker text ,timeFrom text,timeTo text)");
         Log.i("DatabaseTabs","Accept Database Created");
     }
 
