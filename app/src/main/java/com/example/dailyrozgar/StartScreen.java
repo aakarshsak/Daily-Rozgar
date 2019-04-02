@@ -44,7 +44,7 @@ public class StartScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //starting login page to sign in as a worker
-                startActivity(new Intent(StartScreen.this,WorkerMainActivity.class));
+                startActivity(new Intent(StartScreen.this,WorkerLogin.class));
             }
         });
     }

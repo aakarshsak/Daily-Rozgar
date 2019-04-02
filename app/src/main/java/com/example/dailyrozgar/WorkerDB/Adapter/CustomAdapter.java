@@ -1,5 +1,7 @@
 package com.example.dailyrozgar.WorkerDB.Adapter;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -12,17 +14,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.dailyrozgar.MyDB.MyDatabase;
+import com.example.dailyrozgar.MyDB.RequestDB.Request;
 import com.example.dailyrozgar.R;
 import com.example.dailyrozgar.WorkerDB.Class.Worker;
 
-import java.sql.Time;
+
 import java.util.ArrayList;
-import java.util.Timer;
+
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     private ArrayList<Worker> dataset;
     String username;
+    View view;
     public CustomAdapter(ArrayList<Worker> dataset,String username) {
         this.dataset = dataset;
         this.username = username;
@@ -31,7 +36,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.workers_list_card_view,parent,false);
+        view= LayoutInflater.from(parent.getContext()).inflate(R.layout.workers_list_card_view,parent,false);
         MyViewHolder myViewHolder=new MyViewHolder(view);
         return myViewHolder;
     }
@@ -51,66 +56,99 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         TimePicker timePicker=holder.timePicker;
         TextView t=holder.t;
         TextView selTime=holder.selTime;
+        RelativeLayout norRel=holder.norRel;
 
-        selTime.setVisibility(View.INVISIBLE);
-        t.setVisibility(View.INVISIBLE);
-        timeRel.setVisibility(View.INVISIBLE);
-        imgC.setVisibility(View.INVISIBLE);
-        String prof=dataset.get(position).getProf();
         name.setText(dataset.get(position).getFirst() + " " + dataset.get(position).getLast());
         price.setText(dataset.get(position).getBase());
         location.setText(dataset.get(position).getLoc());
+        imgC.setVisibility(View.INVISIBLE);
+        imgP.setVisibility(View.VISIBLE);
 
-        reqButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                timeRel.setVisibility(View.VISIBLE);
-                buttonRel.setVisibility(View.INVISIBLE);
-                int  hour=timePicker.getCurrentHour();
-                int  min= timePicker.getCurrentMinute();
-                String format;
-                int hour2;
-                if (hour == 0) {
-                    hour += 12;
-                    format = "AM";
-                } else if (hour == 12) {
-                    format = "PM";
-                } else if (hour > 12) {
-                    hour -= 12;
-                    format = "PM";
-                } else {
-                    format = "AM";
+        MyDatabase myDatabase=new MyDatabase(view.getContext());
+        Cursor resultSet =myDatabase.getParticularRequest(dataset.get(position).getUsername()+"."+username);
+        resultSet.moveToFirst();
+        Request req0=new Request();
+        req0.setTo(resultSet.getString(2));
+        req0.setFrom(resultSet.getString(1));
+        if(resultSet!=null){
+            imgP.setVisibility(View.INVISIBLE);
+            imgC.setVisibility(View.VISIBLE);
+            reqButton.setEnabled(false);
+            selTime.setVisibility(View.VISIBLE);
+            selTime.setText(req0.getFrom()+" - "+req0.getTo());
+            t.setVisibility(View.INVISIBLE);
+        }
+        else {
+            reqButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    timeRel.setVisibility(View.VISIBLE);
+                    norRel.setVisibility(View.INVISIBLE);
+                    int hour = timePicker.getCurrentHour();
+                    int min = timePicker.getCurrentMinute();
+                    String format;
+                    int hour2;
+                    if (hour == 0) {
+                        hour += 12;
+                        format = "AM";
+                    } else if (hour == 12) {
+                        format = "PM";
+                    } else if (hour > 12) {
+                        hour -= 12;
+                        format = "PM";
+                    } else {
+                        format = "AM";
+                    }
+
+                    String timeTo = new String(hour + " : " + min + " " + format);
+                    String timeFrom = new String((hour + 2) + " : " + min + " " + format);
+
+                    reqCon.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            Request req = new Request();
+                            req.setCustomer(dataset.get(position).getUsername());
+                            req.setWorker(username);
+                            req.setTo(timeTo);
+                            req.setFrom(timeFrom);
+
+                            MyDatabase sdb = new MyDatabase(view.getContext());
+                            sdb.open();
+                            ContentValues cv = new ContentValues();
+                            cv.put("cusWorker", req.getCustomer() + "." + req.getWorker());
+                            cv.put("timeTo", req.getTo());
+                            cv.put("timeFrom", req.getFrom());
+                            sdb.insertRequest(cv);
+
+
+                            timeRel.setVisibility(View.INVISIBLE);
+                            norRel.setVisibility(View.VISIBLE);
+                            imgC.setVisibility(View.VISIBLE);
+                            imgP.setVisibility(View.INVISIBLE);
+                            reqButton.setEnabled(false);
+                            t.setVisibility(View.VISIBLE);
+                            selTime.setVisibility(View.VISIBLE);
+                            selTime.setText(timeFrom + " - " + timeTo);
+
+
+                        }
+                    });
+
+
+                    reqRej.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            timeRel.setVisibility(View.INVISIBLE);
+                            norRel.setVisibility(View.VISIBLE);
+
+                        }
+                    });
+
+
                 }
-
-                String timeTo=new String(hour+" : "+min+" "+format);
-                String timeFrom=new String((hour+2)+" : "+min+" "+format);
-
-                reqCon.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        timeRel.setVisibility(View.INVISIBLE);
-                        buttonRel.setVisibility(View.VISIBLE);
-                        imgC.setVisibility(View.VISIBLE);
-                        imgP.setVisibility(View.INVISIBLE);
-                        reqButton.setEnabled(false);
-                        t.setVisibility(View.VISIBLE);
-                        selTime.setVisibility(View.VISIBLE);
-                        selTime.setText(timeFrom+" - "+timeTo);
-                    }
-                });
-
-                reqRej.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        timeRel.setVisibility(View.INVISIBLE);
-                        buttonRel.setVisibility(View.VISIBLE);
-
-                    }
-                });
-
-
-            }
-        });
+            });
+        }
     }
 
     @Override
@@ -126,7 +164,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         TimePicker timePicker;
         Button reqConfirm;
         Button reqReject;
-        RelativeLayout timeRel;
+        RelativeLayout timeRel,norRel;
         public MyViewHolder(View itemView) {
             super(itemView);
             this.name = itemView.findViewById(R.id.workerName);
@@ -142,7 +180,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             this.reqReject=itemView.findViewById(R.id.reqReject);
             this.selTime=itemView.findViewById(R.id.selectedTimeValue);
             this.t=itemView.findViewById(R.id.selectedTime);
+            this.norRel=itemView.findViewById(R.id.norRel);
             itemView.setTag(itemView);
         }
     }
+
+
+
+
+
 }
