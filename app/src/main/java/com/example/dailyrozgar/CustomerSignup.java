@@ -135,7 +135,7 @@ public class CustomerSignup extends AppCompatActivity {
                     "\",\"street\":\"" + c.getStreet() +
                     "\",\"landmark\":\"" + c.getLandmark() +
                     "\",\"lname\":\"" + c.getLname() +
-                    "\",\"locality\":\"" + c.getLoc() +
+                    "\",\"area\":\"" + c.getLoc() +
                     "\",\"city\":\"" + c.getCity() +
                     "\",\"zip\":\"" + c.getZip() +
                     "\",\"state\":\"" + c.getState() +"\"}";

@@ -8,13 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.TimePicker;
+
 
 import com.example.dailyrozgar.CustomerDB.Class.Customer;
 import com.example.dailyrozgar.CustomerDB.Common;
+import com.example.dailyrozgar.MyDB.AcceptDB.Accept;
+import com.example.dailyrozgar.MyDB.Helper;
 import com.example.dailyrozgar.MyDB.RequestDB.Request;
 import com.example.dailyrozgar.R;
 import com.mongodb.BasicDBList;
@@ -37,7 +38,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        view= LayoutInflater.from(parent.getContext()).inflate(R.layout.workers_list_card_view,parent,false);
+        view= LayoutInflater.from(parent.getContext()).inflate(R.layout.customer_list_cardview,parent,false);
         MyViewHolder myViewHolder=new MyViewHolder(view);
         return myViewHolder;
     }
@@ -64,6 +65,17 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         accButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                Helper helper=new Helper(view.getContext());
+                helper.deleteRequest(dataset.get(position));
+                Accept accept=new Accept();
+                accept.setCustomer(dataset.get(position).getCustomer());
+                accept.setWorker(dataset.get(position).getWorker());
+                accept.setFrom(dataset.get(position).getFrom());
+                accept.setTo(dataset.get(position).getTo());
+                helper.addAccept(accept);
+
                 accRel.setVisibility(View.INVISIBLE);
                 rejButtonRel.setVisibility(View.INVISIBLE);
             }
@@ -84,7 +96,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         return dataset.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name,location,time;
         RelativeLayout accButtonRel,rejButtonRel;
         Button accButton,rejButton;
@@ -146,12 +158,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                         temp.setUsername(userObj.get("username").toString());
                         temp.setPassword(userObj.get("password").toString());
                         temp.setFname(userObj.get("fname").toString());
+                        temp.setLoc(userObj.get("area").toString());
                         temp.setLname(userObj.get("lname").toString());
                         temp.setCity(userObj.get("city").toString());
                         temp.setStreet(userObj.get("street").toString());
                         temp.setFlat(userObj.get("flat").toString());
                         temp.setLandmark(userObj.get("landmark").toString());
-                        temp.setLoc(userObj.get("locality").toString());
                         temp.setZip(userObj.get("zip").toString());
                         temp.setState(userObj.get("state").toString());
                         return temp;

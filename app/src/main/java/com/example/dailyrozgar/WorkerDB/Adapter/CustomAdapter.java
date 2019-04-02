@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.dailyrozgar.MyDB.AcceptDB.Accept;
 import com.example.dailyrozgar.MyDB.Helper;
 import com.example.dailyrozgar.MyDB.RequestDB.Request;
 import com.example.dailyrozgar.R;
@@ -69,7 +70,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         selTime.setVisibility(View.INVISIBLE);
 
 
+
         Helper oldHelper=new Helper(view.getContext());
+
+        Accept a=oldHelper.getAccept(username,dataset.get(position).getUsername());
+        if(a!=null){
+            reqButton.setVisibility(View.INVISIBLE);
+            reqButton.setEnabled(false);
+
+        }
+        else{
         Request r=oldHelper.getRequest(username,dataset.get(position).getUsername());
         if(r!=null){
 
@@ -80,7 +90,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             selTime.setVisibility(View.VISIBLE);
             selTime.setText(r.getFrom()+" - "+r.getTo());
 
-        }
+        }}
 
 //        MyDatabase myDatabase=new MyDatabase(view.getContext());
 //        Cursor resultSet =myDatabase.getParticularRequest(dataset.get(position).getUsername()+"."+username);

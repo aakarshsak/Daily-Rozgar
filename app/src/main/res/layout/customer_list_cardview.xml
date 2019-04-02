@@ -24,31 +24,30 @@
             android:background="@color/primary_light"
             android:id="@+id/norRel">
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SKULL"
                 android:textStyle="bold"
                 android:textAllCaps="true"
                 android:textSize="18dp"
                 android:fontFamily="casual"
-                android:layout_centerHorizontal="true"
                 android:textColor="@color/primary_text"
                 android:id="@+id/customerHomeName"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="serif-monospace"
-                android:typeface="monospace"
-                android:textColor="@color/primary_text"
-                android:text="Price"
+                android:text="Location"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textSize="18dp"
+                android:fontFamily="casual"
                 android:layout_below="@id/customerHomeName"
-                android:id="@+id/customerLocation"
-                android:layout_marginBottom="5dp"
-                />
+                android:textColor="@color/primary_text"
+                android:id="@+id/customerLocation"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="serif-monospace"
                 android:typeface="monospace"
@@ -60,7 +59,7 @@
                 />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="serif-monospace"
                 android:typeface="monospace"
