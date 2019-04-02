@@ -1,10 +1,9 @@
 package com.example.dailyrozgar.WorkerDB.Adapter;
 
 import android.content.ContentValues;
-import android.database.Cursor;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.example.dailyrozgar.MyDB.MyDatabase;
+import com.example.dailyrozgar.MyDB.Helper;
 import com.example.dailyrozgar.MyDB.RequestDB.Request;
 import com.example.dailyrozgar.R;
 import com.example.dailyrozgar.WorkerDB.Class.Worker;
@@ -28,6 +27,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     private ArrayList<Worker> dataset;
     String username;
     View view;
+
     public CustomAdapter(ArrayList<Worker> dataset,String username) {
         this.dataset = dataset;
         this.username = username;
@@ -38,6 +38,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         view= LayoutInflater.from(parent.getContext()).inflate(R.layout.workers_list_card_view,parent,false);
         MyViewHolder myViewHolder=new MyViewHolder(view);
+
         return myViewHolder;
     }
 
@@ -64,6 +65,22 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         imgC.setVisibility(View.INVISIBLE);
         imgP.setVisibility(View.VISIBLE);
         timeRel.setVisibility(View.INVISIBLE);
+        t.setVisibility(View.INVISIBLE);
+        selTime.setVisibility(View.INVISIBLE);
+
+
+        Helper oldHelper=new Helper(view.getContext());
+        Request r=oldHelper.getRequest(username,dataset.get(position).getUsername());
+        if(r!=null){
+
+            imgC.setVisibility(View.VISIBLE);
+            imgP.setVisibility(View.INVISIBLE);
+            reqButton.setEnabled(false);
+            t.setVisibility(View.VISIBLE);
+            selTime.setVisibility(View.VISIBLE);
+            selTime.setText(r.getFrom()+" - "+r.getTo());
+
+        }
 
 //        MyDatabase myDatabase=new MyDatabase(view.getContext());
 //        Cursor resultSet =myDatabase.getParticularRequest(dataset.get(position).getUsername()+"."+username);
@@ -108,18 +125,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                         public void onClick(View v) {
 
                             Request req = new Request();
-                            req.setCustomer(dataset.get(position).getUsername());
-                            req.setWorker(username);
+                            req.setWorker(dataset.get(position).getUsername());
+                            req.setCustomer(username);
                             req.setTo(timeTo);
                             req.setFrom(timeFrom);
 
-                            MyDatabase sdb = new MyDatabase(view.getContext());
-                            sdb.open();
-                            ContentValues cv = new ContentValues();
-                            cv.put("cusWorker", req.getCustomer() + "." + req.getWorker());
-                            cv.put("timeTo", req.getTo());
-                            cv.put("timeFrom", req.getFrom());
-                            sdb.insertRequest(cv);
+                            Helper helper=new Helper(view.getContext());
+                            Log.d("Insert:","Inserting");
+                            helper.addRequest(req);
 
 
                             timeRel.setVisibility(View.INVISIBLE);
@@ -184,6 +197,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             itemView.setTag(itemView);
         }
     }
+
+
 
 
 

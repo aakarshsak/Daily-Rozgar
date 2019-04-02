@@ -123,12 +123,19 @@ public class WorkersListActivity extends AppCompatActivity {
                     String pro=userObj.get("occupation").toString();
                     if(pro.equals(s)) {
                         Worker temp = new Worker();
+                        temp.setUsername(userObj.get("username").toString());
+                        temp.setPassword(userObj.get("password").toString());
                         temp.setBase(userObj.get("bamnt").toString());
                         temp.setFirst(userObj.get("firstname").toString());
                         temp.setLast(userObj.get("lastname").toString());
+                        temp.setSex(userObj.get("gender").toString());
+                        temp.setAge(userObj.get("age").toString());
                         temp.setPhone(userObj.get("contactno").toString());
                         temp.setLoc(userObj.get("area").toString());
                         temp.setProf(userObj.get("occupation").toString());
+                        temp.setState(userObj.get("state").toString());
+                        temp.setZip(userObj.get("zcode").toString());
+                        temp.setCity(userObj.get("city").toString());
                         workers.add(temp);
                     }
 

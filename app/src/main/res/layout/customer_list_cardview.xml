@@ -33,7 +33,7 @@
                 android:fontFamily="casual"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/primary_text"
-                android:id="@+id/customerName"/>
+                android:id="@+id/customerHomeName"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                 android:typeface="monospace"
                 android:textColor="@color/primary_text"
                 android:text="Price"
-                android:layout_below="@id/customerName"
+                android:layout_below="@id/customerHomeName"
                 android:id="@+id/customerLocation"
                 android:layout_marginBottom="5dp"
                 />

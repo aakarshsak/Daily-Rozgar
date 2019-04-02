@@ -12,13 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dailyrozgar.CustomerDB.Adapter.CustomAdapter;
-import com.example.dailyrozgar.Home.Model.DataModel;
-import com.example.dailyrozgar.MyDB.MyDatabase;
+import com.example.dailyrozgar.MyDB.Helper;
 import com.example.dailyrozgar.MyDB.RequestDB.Request;
 import com.example.dailyrozgar.R;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,7 +34,7 @@ public class Home extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home2,container,false);
-        String username=getArguments().getString("username");
+        String username=getArguments().getString("Username");
 
 
         layoutManager=new LinearLayoutManager(getActivity());
@@ -46,8 +44,8 @@ public class Home extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        MyDatabase sdb=new MyDatabase(view.getContext());
-        datamodels=sdb.getAllRequests(username);
+        Helper helper=new Helper(view.getContext());
+        datamodels=helper.getAllRequests(username);
 
         adapter=new CustomAdapter(datamodels);
         recyclerView.setAdapter(adapter);

@@ -34,7 +34,7 @@ public class WorkerMainActivity extends AppCompatActivity {
         Worker w=(Worker) i.getSerializableExtra("Worker");
 
         Bundle bundle=new Bundle();
-        bundle.putString("username",w.getUsername());
+        bundle.putString("Username",w.getUsername());
         Home home=new Home();
         home.setArguments(bundle);
         loadFragment(home);
@@ -64,12 +64,16 @@ public class WorkerMainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment=null;
+                Bundle bundle=new Bundle();
+                bundle.putString("Username",w.getUsername());
+
                 switch (item.getItemId())
                 {
                     case R.id.home:fragment=new Home();break;
                     case R.id.myProfile:fragment=new MyProfile();break;
                     case R.id.history:fragment=new History();break;
                 }
+                fragment.setArguments(bundle);
                 return loadFragment(fragment);
             }
         });

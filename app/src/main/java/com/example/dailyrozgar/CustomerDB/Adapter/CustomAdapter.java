@@ -41,7 +41,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         MyViewHolder myViewHolder=new MyViewHolder(view);
         return myViewHolder;
     }
-
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         TextView name=holder.name;
@@ -91,7 +90,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         Button accButton,rejButton;
         public MyViewHolder(View itemView) {
             super(itemView);
-            this.name = itemView.findViewById(R.id.customerName);
+            this.name = itemView.findViewById(R.id.customerHomeName);
             this.location = itemView.findViewById(R.id.customerLocation);
             this.time=itemView.findViewById(R.id.selectedTime);
             this.accButtonRel=itemView.findViewById(R.id.accButtonRel);
