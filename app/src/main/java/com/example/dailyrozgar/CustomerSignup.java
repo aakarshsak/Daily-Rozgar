@@ -26,7 +26,7 @@ import java.net.URL;
 
 public class CustomerSignup extends AppCompatActivity {
 
-    EditText user,pass,repass,first,last,contact,city,zip,state;
+    EditText user,pass,repass,first,last,contact,age,city,zip,state;
     Spinner loc;
     Button btn;
     Boolean flag,flag2;
@@ -43,6 +43,7 @@ public class CustomerSignup extends AppCompatActivity {
         last=findViewById(R.id.customerLastName);
         loc=findViewById(R.id.customerLocality);
         contact=findViewById(R.id.customerContact);
+        age=findViewById(R.id.dob);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,

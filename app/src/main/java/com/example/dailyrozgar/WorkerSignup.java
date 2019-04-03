@@ -47,9 +47,9 @@ public class WorkerSignup extends AppCompatActivity {
 //        state=view.findViewById(R.id.workerState);
 //        zip=view.findViewById(R.id.workerZip);
 
-        username=findViewById(R.id.username);
-        password=findViewById(R.id.password);
-        repass=findViewById(R.id.workerRepass);
+        username=findViewById(R.id.workerUsername);
+        password=findViewById(R.id.workerPassword);
+        repass=findViewById(R.id.workerRePassword);
         prof=findViewById(R.id.workerProfession);
         base=findViewById(R.id.workerBasePrice);
         dob=findViewById(R.id.dob);
