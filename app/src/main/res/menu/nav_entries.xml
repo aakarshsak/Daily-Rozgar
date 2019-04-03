@@ -6,31 +6,18 @@
             android:title="Home"
             android:icon="@drawable/ic_home" />
 
-
-        <item android:id="@+id/myProfile"
-            android:title="My Profile"
-            android:icon="@drawable/ic_person"/>
-
         <item
             android:id="@+id/history"
             android:title="History"
             android:icon="@drawable/ic_history"/>
-    </group>
-
-    <group android:id="@+id/grp2" android:checkableBehavior="single">
 
         <item
             android:id="@+id/notification"
             android:title="Notification"
             android:icon="@drawable/ic_history"/>
 
-        <item android:id="@+id/settings"
-            android:title="Setting"
-            android:icon="@drawable/ic_home" />
-
-        <item android:id="@+id/about"
-            android:title="About"
-            android:icon="@drawable/ic_home"/>
+    </group>
+    <group android:id="@+id/grp2" android:checkableBehavior="single">
 
         <item android:id="@+id/logout"
             android:title="Logout"

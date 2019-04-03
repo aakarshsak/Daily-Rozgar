@@ -57,12 +57,11 @@ public class WorkerMainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.setChecked(true);
                 Bundle b=new Bundle();
-                b.putString("username",w.getUsername());
+                b.putString("Username",w.getUsername());
                 Fragment h=null;
                 switch(item.getItemId())
                 {
                     case R.id.home:h=new Home();h.setArguments(b);loadFragment(h);break;
-                    case R.id.myProfile: h=new MyProfile();h.setArguments(b);loadFragment(h);break;
                     case R.id.history:h=new History();h.setArguments(b);loadFragment(h);break;
                     case R.id.logout:startActivity(new Intent(WorkerMainActivity.this,WorkerLogin.class));
                 }
@@ -82,7 +81,7 @@ public class WorkerMainActivity extends AppCompatActivity {
 
                 switch (item.getItemId())
                 {
-                    case R.id.home:fragment=new Home();break;
+                    case R.id.notification:fragment=new Home();break;
                     case R.id.myProfile:fragment=new MyProfile();break;
                     case R.id.history:fragment=new History();break;
                 }

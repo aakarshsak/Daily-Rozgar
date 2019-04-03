@@ -41,11 +41,12 @@
         android:layout_height="1dp"
         android:background="#0042ee"/>
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:text="Who Are You?"
         android:textSize="40dp"
+        android:src="@drawable/logo"
         android:textColor="@color/primary_text"
         android:textAlignment="gravity"
         android:gravity="center"

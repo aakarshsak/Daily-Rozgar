@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.dailyrozgar.MyDB.AcceptDB.Accept;
+import com.example.dailyrozgar.MyDB.HistoryDB.History;
 import com.example.dailyrozgar.MyDB.RequestDB.Request;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class Helper extends SQLiteOpenHelper {
     private static final String TIME_FROM = "timeFrom";
     private static final String ACCEPT = "Accept";
     private static final String CURRENT = "Current";
+    private static final String HISTORY = "History";
 
     public Helper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -40,6 +42,10 @@ public class Helper extends SQLiteOpenHelper {
                 + CUSTOMER + " TEXT," + WORKER + " TEXT,"
                 + TIME_FROM + " TEXT," + TIME_TO + " TEXT)";
         db.execSQL(CREATE_ACCEPT_TABLE);
+        String CREATE_HISTORY_TABLE = "CREATE TABLE " + HISTORY + "("
+                + CUSTOMER + " TEXT," + WORKER + " TEXT,"
+                + TIME_FROM + " TEXT," + TIME_TO + " TEXT)";
+        db.execSQL(CREATE_HISTORY_TABLE);
         String CREATE_CURRENT_TABLE = "CREATE TABLE " + CURRENT + "("
                 + CUSTOMER + " TEXT," + WORKER + " TEXT)";
         db.execSQL(CREATE_CURRENT_TABLE);
@@ -75,12 +81,12 @@ public class Helper extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    public void addCurrent(String c,String w) {
+    public void addCurrent(String u,String w) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(CUSTOMER, c); // Contact Name
-        values.put(WORKER, w);
+        values.put(CUSTOMER,"aakarshsak");
+        values.put(WORKER,"ashish111");
 
 
         // Inserting Row
@@ -207,6 +213,7 @@ public class Helper extends SQLiteOpenHelper {
 
         return requestList;
     }
+
 
     public ArrayList<Accept> getAllAccept(String worker) {
         ArrayList<Accept> requestList = new ArrayList<Accept>();

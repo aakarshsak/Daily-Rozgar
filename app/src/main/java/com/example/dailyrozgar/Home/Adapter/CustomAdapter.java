@@ -42,7 +42,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         ImageView img=holder.imageView;
         TextView textViewDesc=holder.textViewDesc;
         textViewTitle.setText(dataset.get(position).getTitle().toString());
-        //img.setImageResource(dataset.get(position).getImage());
+        img.setImageResource(dataset.get(position).getImage());
         textViewDesc.setText(dataset.get(position).getDescription().toString());
     }
 

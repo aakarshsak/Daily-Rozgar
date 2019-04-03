@@ -89,8 +89,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 Helper helper=new Helper(view.getContext());
                 helper.deleteRequest(dataset.get(position));
 
-
-
             }
         });
 

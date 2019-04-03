@@ -216,6 +216,8 @@
                 android:layout_height="100dp"
                 android:layout_below="@id/t"
                 android:id="@+id/timePicker"
+                android:background="@color/primary_text"
+                android:numbersTextColor="@color/primary_text"
                 android:layout_centerHorizontal="true"
                 android:timePickerMode="spinner">
 

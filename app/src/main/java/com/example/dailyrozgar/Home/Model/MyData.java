@@ -8,7 +8,7 @@ public class MyData {
 
     public static int[] images={R.drawable.electrician,
             R.drawable.plumber,
-            R.drawable.technician,
+            R.drawable.gardener,
             R.drawable.carpenter,
             R.drawable.painter,
             R.drawable.housekeeping};

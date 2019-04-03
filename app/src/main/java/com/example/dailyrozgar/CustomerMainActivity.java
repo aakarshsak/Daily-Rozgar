@@ -87,27 +87,27 @@ public class CustomerMainActivity extends AppCompatActivity {
         });
 
 
-        //Bottom navigation switching on selection
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                Bundle b=new Bundle();
-                b.putString("username",c.getUsername());
-                Fragment h=null;
-                switch(item.getItemId())
-                {
-                    case R.id.home:h=new Home();break;
-                    case R.id.myProfile: h=new MyProfile();break;
-                    case R.id.history:h=new History();break;
-                    case R.id.logout:startActivity(new Intent(CustomerMainActivity.this,CustomerLogin.class));
-                }
-                h.setArguments(b);
-
-                return loadFragment(h);
-            }
-        });
+//        //Bottom navigation switching on selection
+//        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigation);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//                Bundle b=new Bundle();
+//                b.putString("username",c.getUsername());
+//                Fragment h=null;
+//                switch(item.getItemId())
+//                {
+//                    case R.id.home:h=new Home();break;
+//                    case R.id.myProfile: h=new MyProfile();break;
+//                    case R.id.history:h=new History();break;
+//                    case R.id.logout:startActivity(new Intent(CustomerMainActivity.this,CustomerLogin.class));
+//                }
+//                h.setArguments(b);
+//
+//                return loadFragment(h);
+//            }
+//        });
 
     }
 

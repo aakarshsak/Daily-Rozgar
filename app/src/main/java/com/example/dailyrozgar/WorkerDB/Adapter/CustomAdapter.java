@@ -1,6 +1,8 @@
 package com.example.dailyrozgar.WorkerDB.Adapter;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -92,9 +94,28 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             can.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    
+                    AlertDialog.Builder alertDialog=new AlertDialog.Builder(view.getContext());
+                    alertDialog.setTitle("Cancellation of Metting.");
+                    alertDialog.setMessage("Do you want to continue ?");
+                    alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            oldHelper.deleteAccept(a);
+                            dialog.dismiss();
+                        }
+                    });
+
+                    alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog dialog = alertDialog.create();
+                    dialog.show();
                 }
             });
+
 
         }
         else{
@@ -145,8 +166,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                         format = "AM";
                     }
 
-                    String timeTo = new String(hour + " : " + min + " " + format);
-                    String timeFrom = new String((hour + 2) + " : " + min + " " + format);
+                    String timeTo = new String(hour + 2+" : " + min + " " + format);
+                    String timeFrom = new String((hour ) + " : " + min + " " + format);
 
                     reqCon.setOnClickListener(new View.OnClickListener() {
                         @Override
