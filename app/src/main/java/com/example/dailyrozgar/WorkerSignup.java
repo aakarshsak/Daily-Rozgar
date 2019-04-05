@@ -37,7 +37,6 @@ public class WorkerSignup extends AppCompatActivity {
 
         Worker worker=new Worker();
         submit=findViewById(R.id.workerSubmitButton);
-        reset=findViewById(R.id.workerResetButton);
 
         first=findViewById(R.id.workerFirstName);
         last=findViewById(R.id.workerLastName);

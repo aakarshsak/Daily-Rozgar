@@ -136,6 +136,7 @@
             android:layout_height="wrap_content"
             android:background="@color/primary"
             android:padding="5dp"
+            android:inputType="number"
             android:textColor="@color/primary_text"
             android:layout_marginHorizontal="6dp"
             android:id="@+id/dob"/>
@@ -262,7 +263,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="19"
-                android:background="@color/divider"
+                android:background="@drawable/can_btn_bg"
                 android:text="Sumbit"
                 android:id="@+id/workerSubmitButton"
                 android:textColor="@color/primary_text"/>
@@ -270,14 +271,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"></LinearLayout>
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="19"
-                android:text="Reset"
-                android:textColor="@color/primary_text"
-                android:background="@color/divider"
-                android:id="@+id/workerResetButton"/>
+
         </LinearLayout>
     </LinearLayout>
 

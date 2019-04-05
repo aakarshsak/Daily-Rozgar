@@ -166,8 +166,17 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                         format = "AM";
                     }
 
-                    String timeTo = new String(hour + 2+" : " + min + " " + format);
-                    String timeFrom = new String((hour ) + " : " + min + " " + format);
+                    String str;
+                    if(min<10){
+                        str=new String("0"+min);
+                    }
+                    else{
+                        str=new String(""+min);
+                    }
+                    String timeTo =
+                            new String(hour + 2+" : " + str + " " + format);
+                    String timeFrom =
+                            new String((hour ) + " : " + str + " " + format);
 
                     reqCon.setOnClickListener(new View.OnClickListener() {
                         @Override
